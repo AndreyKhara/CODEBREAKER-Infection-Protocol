@@ -1,16 +1,18 @@
 using UnityEngine;
+
 namespace CDB.Character
 {
     public class Player : Character, IHealth
     {
         [SerializeField] private float _maxHealth = 100f;
         private float _currentHealth;
-        //private [SerializeField] InputAction _inputAct;
 
         private void Awake()
         {
+
             CurrentHealth = MaxHealth;
         }
+
         //health
         public float MaxHealth
         {
@@ -48,8 +50,6 @@ namespace CDB.Character
             Debug.Log("Умэрр");
         }
         // #health
-
-
         
 
     }
