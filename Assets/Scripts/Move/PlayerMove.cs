@@ -103,6 +103,7 @@ namespace CDB.Input
 
         private void FixedUpdate()
         {
+            UpdateMoveDirection();
             Vector3 movement = _moveDirection3D * MoveSpeed * Time.fixedDeltaTime;
             _rgb.AddForce(movement, ForceMode.VelocityChange);
         }
