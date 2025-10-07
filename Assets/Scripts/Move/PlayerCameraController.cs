@@ -1,11 +1,12 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Zenject;
 
 namespace CDB.Input
 {
     public class PlayerCameraController : MonoBehaviour
-    {
-        [SerializeField] private PlayerInput _playerInput;
+    {   
+
         [SerializeField] private Transform _cameraTransform;
 
         [Header("Настройки вращения")]
@@ -22,6 +23,10 @@ namespace CDB.Input
         private Vector2 _smoothedMouseDelta; // Сглаженное смещение мыши
         private Vector2 _cameraRotation;     // Накопленные углы вращения камеры (x для Yaw, y для Pitch)
 
+        
+        [Inject]
+        private PlayerInput _playerInput;
+        
         private void Awake()
         {
             _cameraControl = _playerInput.actions["CameraControl"];
