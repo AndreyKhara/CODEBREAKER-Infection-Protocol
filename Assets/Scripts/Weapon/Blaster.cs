@@ -46,6 +46,7 @@ public class Blaster : MonoBehaviour, IWeapon
     public void Recharge()
     {
         AmountAmmo = MaxAmmo;
+        Debug.Log("Recharge");
     }
 
 
