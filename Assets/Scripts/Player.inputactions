@@ -1,4 +1,5 @@
 {
+    "version": 1,
     "name": "Player",
     "maps": [
         {
@@ -27,6 +28,33 @@
                     "name": "Jump",
                     "type": "Button",
                     "id": "64865f88-2d49-438f-91dd-874f0d0f3e72",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Shoot",
+                    "type": "Button",
+                    "id": "3bbeb01f-6b33-4501-8261-c23023c9a10d",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ChangeWeapon",
+                    "type": "Value",
+                    "id": "83527bd3-dae2-4edd-847f-5134ff1aae58",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Recharge",
+                    "type": "Button",
+                    "id": "f713cbc3-9a1b-45aa-bf44-bfd411b38188",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -108,6 +136,39 @@
                     "processors": "",
                     "groups": "",
                     "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1e8302b3-ccf9-48aa-96a9-eb25e7a40dae",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Shoot",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c65593df-de96-48e7-81bc-5e0b6b6620fb",
+                    "path": "<Mouse>/scroll",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ChangeWeapon",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "96ce3797-300b-4bda-bfaf-3aaae33152a2",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Recharge",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

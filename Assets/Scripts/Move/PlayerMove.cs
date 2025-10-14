@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using DG.Tweening;
+using Zenject;
 
 namespace CDB.Input
 {
@@ -9,8 +10,8 @@ namespace CDB.Input
         public float MoveSpeed = 5f;
         public float JumpForce = 5f;
         public LayerMask Ground;
+ 
         [SerializeField] private Rigidbody _rgb;
-        [SerializeField] private PlayerInput _playerInput;
         [SerializeField] private Transform _cameraTransform;
         [SerializeField] private Transform _groundChecker;
         [SerializeField] private float _moveCameraAnimationAmount = 0.7f; // Смещение от базовой позиции
@@ -24,6 +25,9 @@ namespace CDB.Input
 
         private Sequence _animationSequence;
         private Vector3 _cameraBasePosition;
+
+        [Inject]
+         private PlayerInput _playerInput;
 
         private void Awake()
         {
@@ -99,6 +103,7 @@ namespace CDB.Input
 
         private void FixedUpdate()
         {
+            UpdateMoveDirection();
             Vector3 movement = _moveDirection3D * MoveSpeed * Time.fixedDeltaTime;
             _rgb.AddForce(movement, ForceMode.VelocityChange);
         }
