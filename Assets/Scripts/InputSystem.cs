@@ -138,6 +138,15 @@ namespace CD.Input
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Recharge"",
+                    ""type"": ""Button"",
+                    ""id"": ""f713cbc3-9a1b-45aa-bf44-bfd411b38188"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -239,6 +248,17 @@ namespace CD.Input
                     ""action"": ""ChangeWeapon"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""96ce3797-300b-4bda-bfaf-3aaae33152a2"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Recharge"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -252,6 +272,7 @@ namespace CD.Input
             m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
             m_Player_Shoot = m_Player.FindAction("Shoot", throwIfNotFound: true);
             m_Player_ChangeWeapon = m_Player.FindAction("ChangeWeapon", throwIfNotFound: true);
+            m_Player_Recharge = m_Player.FindAction("Recharge", throwIfNotFound: true);
         }
 
         ~@InputSystem()
@@ -337,6 +358,7 @@ namespace CD.Input
         private readonly InputAction m_Player_Jump;
         private readonly InputAction m_Player_Shoot;
         private readonly InputAction m_Player_ChangeWeapon;
+        private readonly InputAction m_Player_Recharge;
         /// <summary>
         /// Provides access to input actions defined in input action map "Player".
         /// </summary>
@@ -368,6 +390,10 @@ namespace CD.Input
             /// Provides access to the underlying input action "Player/ChangeWeapon".
             /// </summary>
             public InputAction @ChangeWeapon => m_Wrapper.m_Player_ChangeWeapon;
+            /// <summary>
+            /// Provides access to the underlying input action "Player/Recharge".
+            /// </summary>
+            public InputAction @Recharge => m_Wrapper.m_Player_Recharge;
             /// <summary>
             /// Provides access to the underlying input action map instance.
             /// </summary>
@@ -409,6 +435,9 @@ namespace CD.Input
                 @ChangeWeapon.started += instance.OnChangeWeapon;
                 @ChangeWeapon.performed += instance.OnChangeWeapon;
                 @ChangeWeapon.canceled += instance.OnChangeWeapon;
+                @Recharge.started += instance.OnRecharge;
+                @Recharge.performed += instance.OnRecharge;
+                @Recharge.canceled += instance.OnRecharge;
             }
 
             /// <summary>
@@ -435,6 +464,9 @@ namespace CD.Input
                 @ChangeWeapon.started -= instance.OnChangeWeapon;
                 @ChangeWeapon.performed -= instance.OnChangeWeapon;
                 @ChangeWeapon.canceled -= instance.OnChangeWeapon;
+                @Recharge.started -= instance.OnRecharge;
+                @Recharge.performed -= instance.OnRecharge;
+                @Recharge.canceled -= instance.OnRecharge;
             }
 
             /// <summary>
@@ -510,6 +542,13 @@ namespace CD.Input
             /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
             /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
             void OnChangeWeapon(InputAction.CallbackContext context);
+            /// <summary>
+            /// Method invoked when associated input action "Recharge" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// </summary>
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+            void OnRecharge(InputAction.CallbackContext context);
         }
     }
 }

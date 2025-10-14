@@ -2,8 +2,9 @@ using UnityEngine;
 
 public interface IWeapon
 {
-    int AmountmMgazines { set; get; }
-    int AmountAmmo { set; get; }
+    int AmountMagazines { get; set; }
+    int MaxAmmo { get; set; }
+    int AmountAmmo { get; set; }
 
     void Shoot();
     void Recharge();
