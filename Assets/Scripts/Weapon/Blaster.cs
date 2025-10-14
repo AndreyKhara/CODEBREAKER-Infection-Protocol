@@ -40,7 +40,6 @@ public class Blaster : MonoBehaviour, IWeapon
             Debug.Log("no Ammo");
             Recharge();
         }
-
     }
 
     public void Recharge()
