@@ -2,16 +2,15 @@ using UnityEngine;
 using System.Collections.Generic;
 using Zenject;
 using UnityEngine.InputSystem;
-
-
+using System.Net.NetworkInformation;
+using System.Reflection;
 
 namespace CDB.Input
 {
     public class PlayerWeaponSystem : MonoBehaviour
     {
-        public List<GameObject> weapons;
-        //[SerializeField] private Blaster currentWeapon;
-        private IWeapon _iCurrentWeapon;
+        [SerializeField] private List<GameObject> _weapons;
+        public IWeapon iCurrentWeapon;
         private int _indexWeapon = 0; 
 
         private InputAction _shootAction;
@@ -31,7 +30,7 @@ namespace CDB.Input
             _rechargeAction.performed += RechargePressed;
             _changeWeaponAction.performed += ChangeWeapon;
 
-            _iCurrentWeapon = weapons[_indexWeapon].GetComponent<IWeapon>();
+            iCurrentWeapon = _weapons[_indexWeapon].GetComponent<IWeapon>();
         }
 
         private void ChangeWeapon(InputAction.CallbackContext context)
@@ -53,7 +52,7 @@ namespace CDB.Input
         {
             _indexWeapon++;
 
-            if (_indexWeapon > weapons.Count-1)
+            if (_indexWeapon > _weapons.Count-1)
             {
                 _indexWeapon = 0;
             }
@@ -67,30 +66,31 @@ namespace CDB.Input
 
             if (_indexWeapon < 0)
             {
-                _indexWeapon = weapons.Count - 1;
+                _indexWeapon = _weapons.Count - 1;
             }
 
             ActivateWeapon(_indexWeapon);
         }
 
 
-        void ActivateWeapon(int index)
+        private void ActivateWeapon(int index)
         {
-            for (int i = 0; i < weapons.Count; i++)
+            for (int i = 0; i < _weapons.Count; i++)
             {
-                weapons[i].SetActive(i == index);
+                _weapons[i].SetActive(i == index);
 
             }
-            _iCurrentWeapon = weapons[_indexWeapon].GetComponent<IWeapon>();
+            iCurrentWeapon = _weapons[_indexWeapon].GetComponent<IWeapon>();
         }
         private void ShootPressed(InputAction.CallbackContext context)
         {
-            _iCurrentWeapon.Shoot();
+            iCurrentWeapon.Shoot();
         }
 
         private void RechargePressed(InputAction.CallbackContext context)
         {
-            _iCurrentWeapon.Recharge();
+            iCurrentWeapon.Recharge();
         }
+
     }
 }
