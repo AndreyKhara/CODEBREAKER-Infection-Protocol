@@ -10,12 +10,13 @@ public class PlayerModuleSystem : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log("On Collision");
+        // TO DO
         Module newModule = other.GetComponent<Module>();
 
         if (newModule == null) return;
 
         _playerWeaponSystem.iCurrentWeapon.ChangeModule(newModule);
 
-        Destroy(other);
+        Destroy(other.gameObject);
     }
 }

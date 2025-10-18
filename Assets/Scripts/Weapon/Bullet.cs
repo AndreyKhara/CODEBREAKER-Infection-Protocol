@@ -3,11 +3,8 @@ using CDB.Character;
 public class Bullet : MonoBehaviour, IProjectile
 {
     [SerializeField] private float _timeLife = 5f;
-    
     [SerializeField] private float _speed = 50f;
-    
     [SerializeField] private float _damage = 10f;
-
     [SerializeField] private Rigidbody _rb;
     private float startTime;
 

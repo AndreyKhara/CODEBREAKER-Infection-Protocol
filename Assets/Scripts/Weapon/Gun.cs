@@ -10,35 +10,32 @@ public class Gun : MonoBehaviour, IWeapon
 
     protected IBarrel _barrelModule;
     protected IAmmo _ammoModule;
-   // protected IModifier _modifierModule;
-   // protected ICatalyst _catalystModule;
+    protected IModifier _modifierModule;
+    protected ICatalyst _catalystModule;
 
     private GameObject _gbjBarrel;
     private GameObject _gbjAmmo;
     private GameObject _gbjModifier;
     private GameObject _gbjCatalyst;
 
-    [SerializeField] protected GameObject _bulletPrefab;
+    protected GameObject _bulletPrefab;
 
     public void ChangeModule(Module newModule)
     {
-        //IBarrel barrel = newModule.GetComponent<IBarrel>();
         if (newModule is IBarrel barrel)
         {
             Destroy(_gbjBarrel);
             _gbjBarrel = Instantiate(newModule.gameObjectOnGun, _transformBarrel.position, _transformBarrel.rotation);
-            _gbjBarrel.transform.SetParent(gameObject.transform);
+            _gbjBarrel.transform.SetParent(_transformBarrel);
             _barrelModule = _gbjBarrel.GetComponent<IBarrel>();
             return;
         }
 
-
-       // IAmmo ammo = newModule.GetComponent<IAmmo>();
         if (newModule is IAmmo ammo)
         {
             Destroy(_gbjAmmo);
-            _gbjAmmo = Instantiate(newModule.gameObjectOnGun, _transformAmmo.position, Quaternion.identity);
-            _gbjAmmo.transform.SetParent(gameObject.transform);
+            _gbjAmmo = Instantiate(newModule.gameObjectOnGun, _transformAmmo.position, _transformAmmo.rotation);
+            _gbjAmmo.transform.SetParent(_transformAmmo);
             _ammoModule = ammo;
 
             IProjectile ibullet = _bulletPrefab.GetComponent<IProjectile>();
@@ -46,24 +43,30 @@ public class Gun : MonoBehaviour, IWeapon
             ibullet.Speed = _ammoModule.Speed;
             return;
         }
-        /*
-            IModifer modifier = newModule.GetComponent<IModifier>();
-            if (modifier != null)
+        
+          
+           /* if (newModule is IModifier modifier)
             {
-                Destroy(_gbjModifer);
-                _gbjModifer = Instantiate(newModule, _transformModifier.position, Quaternion.identity);
-                _modifierModule = modifier;
+            Destroy(_gbjModifer);
+            _gbjModifer = Instantiate(newModule.gameObjectOnGun, _transformModifier.position, _transformModifier.rotation);
+                
+            _modifierModule = modifier;
                 return;
             }
-
-            ICatalyst  = newModule.GetComponent<IModifier>();
-            if (modifier != null)
+*/
+            
+            if (newModule is ICatalyst catalyst)
             {
-                Destroy(_gbjModifer);
-                _gbjModifer = Instantiate(newModule, _transformModifier.position, Quaternion.identity);
-                _modifierModule = modifier;
+                Destroy(_gbjCatalyst);
+                _gbjCatalyst = Instantiate(newModule.gameObjectOnGun, _transformCatalyst.position, _transformCatalyst.rotation);
+                _catalystModule = catalyst;
+                _bulletPrefab = _catalystModule.BulletPrefab;
+                
+                IProjectile ibullet = _bulletPrefab.GetComponent<IProjectile>();
+                ibullet.Damage = _ammoModule.Damage;
+                ibullet.Speed = _ammoModule.Speed;
                 return;
-            }*/
+            }
     }
     public virtual void Shoot() { }
     public virtual void Recharge() { }
