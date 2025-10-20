@@ -4,6 +4,8 @@ public class DoubleShot : Module, IBarrel
 {
     [SerializeField] private float _spread = 1f;
     [SerializeField] private int _projectileCount = 1;
+
+
     
     public float Spread
     {
@@ -17,8 +19,8 @@ public class DoubleShot : Module, IBarrel
         private set => _projectileCount = value;
     }
 
-    public Transform GunPoint
+    /*public Transform GunPoint
     {
-        get => transform;
-    }
+        get => gameObjectOnGun.transform;
+    }*/
 }

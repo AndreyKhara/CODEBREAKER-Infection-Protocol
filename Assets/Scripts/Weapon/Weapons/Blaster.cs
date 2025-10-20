@@ -1,3 +1,4 @@
+
 using System.Reflection;
 using UnityEngine;
 
@@ -15,21 +16,11 @@ public class Blaster : Gun
                 float randomPitch = Random.Range(-_spreadAngle, _spreadAngle);
                 float randomYaw = Random.Range(-_spreadAngle, _spreadAngle);
                 Quaternion spreadRotation = Quaternion.Euler(randomPitch, randomYaw, 0f);
-                Quaternion finalRotation = _barrelModule.GunPoint.rotation * spreadRotation;
+                Quaternion finalRotation = _projectileSpawner.rotation * spreadRotation;
 
                 // Создаем пулю
-                Instantiate(_bulletPrefab, _barrelModule.GunPoint.position, finalRotation);
-
-                // Если вы хотите, чтобы пули немного расходились в стороны,
-                // можно добавить небольшой сдвиг к позиции для каждого выстрела.
-                // Например, для двойного выстрела:
-                // if (_shotsPerTriggerPull == 2) {
-                //     Vector3 offset = _barrelTransform.right * (i == 0 ? -0.1f : 0.1f); // Сдвиг влево/вправо
-                //     Instantiate(_bulletPrefab, _barrelTransform.position + offset, finalRotation);
-                // } else {
-                //     Instantiate(_bulletPrefab, _barrelTransform.position, finalRotation);
-                // }
-                // Но для начала, просто из одной точки.
+                //Instantiate(_bulletPrefab, _barrelModule.GunPoint.position, finalRotation);
+                Instantiate(_bulletPrefab, _projectileSpawner.position, finalRotation);
             }
             _ammoModule.AmountAmmo -= _barrelModule.ProjectileCount;
         }

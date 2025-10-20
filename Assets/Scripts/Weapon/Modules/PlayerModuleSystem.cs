@@ -11,12 +11,15 @@ public class PlayerModuleSystem : MonoBehaviour
     {
         Debug.Log("On Collision");
         // TO DO
-        Module newModule = other.GetComponent<Module>();
+        if (other.CompareTag("Module"))
+        {
+            Module newModule = other.GetComponent<Module>();
 
-        if (newModule == null) return;
+            if (newModule == null) return;
 
-        _playerWeaponSystem.iCurrentWeapon.ChangeModule(newModule);
+            _playerWeaponSystem.iCurrentWeapon.ChangeModule(newModule);
 
-        Destroy(other.gameObject);
+            Destroy(other.gameObject);
+        }
     }
 }
