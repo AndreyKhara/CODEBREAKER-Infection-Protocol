@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public interface IAmmo
+public interface IProjectile
 {
     float TimeLife { get; set; }
     float Speed { get; set; }

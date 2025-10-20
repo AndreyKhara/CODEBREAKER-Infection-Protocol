@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1018443338987299149
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8507019442140892345}
+  m_Layer: 0
+  m_Name: CatalystModule
+  m_TagString: Untagged
+  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8507019442140892345
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1018443338987299149}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.377, z: -1.12}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2261724478175716300}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1583231391869014090
 GameObject:
   m_ObjectHideFlags: 0
@@ -33,6 +64,8 @@ Transform:
   - {fileID: 1932109505902026126}
   - {fileID: 4799966658772320390}
   - {fileID: 5541201195628735760}
+  - {fileID: 1040146526617130380}
+  - {fileID: 8507019442140892345}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &-5096249448582047979
@@ -47,11 +80,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea84c3da1d9c67b4792c5d05320b3180, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Blster
-  _amountMagazines: 1
-  _amountAmmo: 10
-  _maxAmmo: 20
-  _bulletPrefab: {fileID: 2227547111498054571, guid: f9ee2e82ffd18ab4b9b686b416c1d1be, type: 3}
-  _barrelTransform: {fileID: 5541201195628735760}
+  _transformBarrel: {fileID: 5541201195628735760}
+  _transformAmmo: {fileID: 1040146526617130380}
+  _transformModifier: {fileID: 0}
+  _transformCatalyst: {fileID: 8507019442140892345}
+--- !u!1 &4446544684222050257
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1040146526617130380}
+  m_Layer: 0
+  m_Name: AmmoModule
+  m_TagString: Untagged
+  m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1040146526617130380
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4446544684222050257}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.649, z: 0.498}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2261724478175716300}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5479911558686102501
 GameObject:
   m_ObjectHideFlags: 0
@@ -62,7 +125,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5541201195628735760}
   m_Layer: 0
-  m_Name: Barrel
+  m_Name: BarrelModule
   m_TagString: Untagged
   m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -77,7 +140,7 @@ Transform:
   m_GameObject: {fileID: 5479911558686102501}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1.564}
+  m_LocalPosition: {x: 0, y: 0, z: 1.614}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
