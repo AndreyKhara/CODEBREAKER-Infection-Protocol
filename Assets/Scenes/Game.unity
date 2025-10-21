@@ -987,7 +987,7 @@ PrefabInstance:
     - target: {fileID: 6908292133831054847, guid: 28273de2f17373943986a047b13f0804, type: 3}
       propertyPath: gameObjectOnGun
       value: 
-      objectReference: {fileID: 1507970114}
+      objectReference: {fileID: 4853612683545968841, guid: affa6d27bbf98f54c8298a79217924b9, type: 3}
     - target: {fileID: 6908292133831054847, guid: 28273de2f17373943986a047b13f0804, type: 3}
       propertyPath: _projectileCount
       value: 5
