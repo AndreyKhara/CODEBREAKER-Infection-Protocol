@@ -131,7 +131,7 @@ GameObject:
   - component: {fileID: 13959482}
   - component: {fileID: 13959481}
   - component: {fileID: 13959480}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1220,7 +1220,7 @@ MonoBehaviour:
   JumpForce: 10
   Ground:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 0
   _rgb: {fileID: 1507970124}
   _cameraTransform: {fileID: 155134442}
   _groundChecker: {fileID: 169706619}
