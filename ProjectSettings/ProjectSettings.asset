@@ -620,7 +620,7 @@ PlayerSettings:
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
   metroPackageName: CODEBREAKER-Infection-Protocol
-  metroPackageVersion: 
+  metroPackageVersion: 1.0.0.0
   metroCertificatePath: 
   metroCertificatePassword: 
   metroCertificateSubject: 
@@ -628,7 +628,7 @@ PlayerSettings:
   metroCertificateNotAfter: 0000000000000000
   metroApplicationDescription: CODEBREAKER-Infection-Protocol
   wsaImages: {}
-  metroTileShortName: 
+  metroTileShortName: CODEBREAKER-Infection-Protocol
   metroTileShowName: 0
   metroMediumTileShowName: 0
   metroLargeTileShowName: 0
