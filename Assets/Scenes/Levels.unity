@@ -269,6 +269,10 @@ PrefabInstance:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 558382524954902085, guid: 0be6c5b8c5dd56a4d8b46bbc1becbc89, type: 3}
+      propertyPath: isCorridor
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 558382524954902085, guid: 0be6c5b8c5dd56a4d8b46bbc1becbc89, type: 3}
       propertyPath: spawnCorridorFirst
       value: 0
       objectReference: {fileID: 0}
@@ -316,7 +320,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 558382524954902085, guid: 0be6c5b8c5dd56a4d8b46bbc1becbc89, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -347,37 +352,74 @@ MonoBehaviour:
   m_GameObject: {fileID: 1716046998}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2df1f78eaf620bc4797b50228cdac895, type: 3}
+  m_Script: {fileID: 11500000, guid: b0f04618071fd8446ba188df968c3f2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  forwardRooms:
+  ForwardRooms:
   - {fileID: 1362420973361950884, guid: f0d2d3e307ce61444b288d24070e2198, type: 3}
   - {fileID: 1362420973361950884, guid: 7eea3497438683946b07d3212042932a, type: 3}
   - {fileID: 1362420973361950884, guid: c0c4e796e520f2d44a51083f76f765b9, type: 3}
-  - {fileID: 1362420973361950884, guid: 2b933ea919924404184cb0c03ee8dfa6, type: 3}
   - {fileID: 1362420973361950884, guid: 4bda947cd5143de4cba1968d8179b274, type: 3}
+  - {fileID: 1362420973361950884, guid: 2b933ea919924404184cb0c03ee8dfa6, type: 3}
   - {fileID: 1362420973361950884, guid: 366ed06829a3dda4f827bdf67a63a878, type: 3}
   - {fileID: 1362420973361950884, guid: 05e0389a442966840a84fd881ea2ec5d, type: 3}
-  backRooms:
-  - {fileID: 1362420973361950884, guid: 7eea3497438683946b07d3212042932a, type: 3}
+  BackRooms:
   - {fileID: 1362420973361950884, guid: 7df6ca7d997d92a4194de69c5416d45e, type: 3}
+  - {fileID: 1362420973361950884, guid: 7eea3497438683946b07d3212042932a, type: 3}
+  - {fileID: 1362420973361950884, guid: 4bda947cd5143de4cba1968d8179b274, type: 3}
+  - {fileID: 1362420973361950884, guid: 366ed06829a3dda4f827bdf67a63a878, type: 3}
   - {fileID: 1362420973361950884, guid: 327909172bbfce049ad88f599002bcdd, type: 3}
   - {fileID: 1362420973361950884, guid: ab6be4da410bd724dabc5ff3d09ffb39, type: 3}
-  rightRooms:
-  - {fileID: 1362420973361950884, guid: a7c30dd51c9056648af9092f19e80092, type: 3}
+  RightRooms:
   - {fileID: 1362420973361950884, guid: 2b933ea919924404184cb0c03ee8dfa6, type: 3}
+  - {fileID: 1362420973361950884, guid: 366ed06829a3dda4f827bdf67a63a878, type: 3}
+  - {fileID: 1362420973361950884, guid: 05e0389a442966840a84fd881ea2ec5d, type: 3}
+  - {fileID: 1362420973361950884, guid: a7c30dd51c9056648af9092f19e80092, type: 3}
   - {fileID: 1362420973361950884, guid: ab6be4da410bd724dabc5ff3d09ffb39, type: 3}
   - {fileID: 1362420973361950884, guid: 9453d81b44767dd408605375a6f07c31, type: 3}
-  leftRooms:
-  - {fileID: 1362420973361950884, guid: 9a4ad2d7da3b43741aa0d4c8cce1dbc6, type: 3}
+  - {fileID: 1362420973361950884, guid: d0681f33850108245a89ca5825415850, type: 3}
+  LeftRooms:
   - {fileID: 1362420973361950884, guid: c0c4e796e520f2d44a51083f76f765b9, type: 3}
+  - {fileID: 1362420973361950884, guid: 4bda947cd5143de4cba1968d8179b274, type: 3}
+  - {fileID: 1362420973361950884, guid: 9a4ad2d7da3b43741aa0d4c8cce1dbc6, type: 3}
   - {fileID: 1362420973361950884, guid: 327909172bbfce049ad88f599002bcdd, type: 3}
   - {fileID: 1362420973361950884, guid: 9453d81b44767dd408605375a6f07c31, type: 3}
-  MainRoom: {fileID: 1362420973361950884, guid: 946234a293896974f8d50b348b8b79e9, type: 3}
-  forwardCorridor: {fileID: 7884153802474357194, guid: ff6a6cae9eef5ce4986f20df9c2ad246, type: 3}
-  backCorridor: {fileID: 4717502212324892873, guid: 8b27e6d7a3bbfbe4b84e6e6cc68237e4, type: 3}
-  rightCorridor: {fileID: 8047777961368145675, guid: 35333d47bca6adc4ebc6995e9d2e8d31, type: 3}
-  leftCorridor: {fileID: 5122836679602839354, guid: 7b11207b2895bba4882fbad025879c97, type: 3}
+  - {fileID: 1362420973361950884, guid: d0681f33850108245a89ca5825415850, type: 3}
+  - {fileID: 1362420973361950884, guid: 05e0389a442966840a84fd881ea2ec5d, type: 3}
+  MainRoom:
+  - {fileID: 1362420973361950884, guid: 946234a293896974f8d50b348b8b79e9, type: 3}
+  ForwardRoomsNoForward:
+  - {fileID: 1362420973361950884, guid: 7df6ca7d997d92a4194de69c5416d45e, type: 3}
+  - {fileID: 1362420973361950884, guid: 9a4ad2d7da3b43741aa0d4c8cce1dbc6, type: 3}
+  - {fileID: 1362420973361950884, guid: a7c30dd51c9056648af9092f19e80092, type: 3}
+  - {fileID: 1362420973361950884, guid: 327909172bbfce049ad88f599002bcdd, type: 3}
+  - {fileID: 1362420973361950884, guid: ab6be4da410bd724dabc5ff3d09ffb39, type: 3}
+  - {fileID: 1362420973361950884, guid: 9453d81b44767dd408605375a6f07c31, type: 3}
+  - {fileID: 1362420973361950884, guid: d0681f33850108245a89ca5825415850, type: 3}
+  BackRoomsNoBack:
+  - {fileID: 1362420973361950884, guid: f0d2d3e307ce61444b288d24070e2198, type: 3}
+  - {fileID: 1362420973361950884, guid: c0c4e796e520f2d44a51083f76f765b9, type: 3}
+  - {fileID: 1362420973361950884, guid: 2b933ea919924404184cb0c03ee8dfa6, type: 3}
+  - {fileID: 1362420973361950884, guid: 05e0389a442966840a84fd881ea2ec5d, type: 3}
+  - {fileID: 1362420973361950884, guid: 9a4ad2d7da3b43741aa0d4c8cce1dbc6, type: 3}
+  - {fileID: 1362420973361950884, guid: a7c30dd51c9056648af9092f19e80092, type: 3}
+  - {fileID: 1362420973361950884, guid: 9453d81b44767dd408605375a6f07c31, type: 3}
+  RightRoomsNoRight:
+  - {fileID: 1362420973361950884, guid: 7df6ca7d997d92a4194de69c5416d45e, type: 3}
+  - {fileID: 1362420973361950884, guid: f0d2d3e307ce61444b288d24070e2198, type: 3}
+  - {fileID: 1362420973361950884, guid: 7eea3497438683946b07d3212042932a, type: 3}
+  - {fileID: 1362420973361950884, guid: c0c4e796e520f2d44a51083f76f765b9, type: 3}
+  - {fileID: 1362420973361950884, guid: 4bda947cd5143de4cba1968d8179b274, type: 3}
+  - {fileID: 1362420973361950884, guid: 9a4ad2d7da3b43741aa0d4c8cce1dbc6, type: 3}
+  - {fileID: 1362420973361950884, guid: 327909172bbfce049ad88f599002bcdd, type: 3}
+  LeftRoomsNoLeft:
+  - {fileID: 1362420973361950884, guid: 7df6ca7d997d92a4194de69c5416d45e, type: 3}
+  - {fileID: 1362420973361950884, guid: f0d2d3e307ce61444b288d24070e2198, type: 3}
+  - {fileID: 1362420973361950884, guid: 2b933ea919924404184cb0c03ee8dfa6, type: 3}
+  - {fileID: 1362420973361950884, guid: 366ed06829a3dda4f827bdf67a63a878, type: 3}
+  - {fileID: 1362420973361950884, guid: a7c30dd51c9056648af9092f19e80092, type: 3}
+  - {fileID: 1362420973361950884, guid: ab6be4da410bd724dabc5ff3d09ffb39, type: 3}
+  - {fileID: 1362420973361950884, guid: 7eea3497438683946b07d3212042932a, type: 3}
 --- !u!4 &1716047000
 Transform:
   m_ObjectHideFlags: 0
@@ -387,7 +429,7 @@ Transform:
   m_GameObject: {fileID: 1716046998}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 20, y: 10.6685, z: -2.38603}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

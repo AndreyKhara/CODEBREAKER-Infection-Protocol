@@ -5,8 +5,6 @@ using UnityEngine;
 public class RoomsSpawner : MonoBehaviour
 {
     public Direction direction;
-    public bool spawnCorridorFirst = true;
-    public bool isCorridor = false;
 
     public enum Direction
     {
@@ -18,7 +16,7 @@ public class RoomsSpawner : MonoBehaviour
         None
     }
 
-    private RoomsVariant variants;
+    private RoomsVariants variants;
     private int rand;
     private bool spawned = false;
     private float waitTime = 3f;
@@ -32,7 +30,7 @@ public class RoomsSpawner : MonoBehaviour
 
     private void Start()
     {
-        variants = GameObject.FindGameObjectWithTag("Rooms").GetComponent<RoomsVariant>();
+        variants = GameObject.FindGameObjectWithTag("Rooms").GetComponent<RoomsVariants>();
         Invoke("Spawn", 0.2f);
     }
 
@@ -47,122 +45,80 @@ public class RoomsSpawner : MonoBehaviour
 
         if (!spawned)
         {
-            if (spawnCorridorFirst && !isCorridor)
-            {
-                SpawnCorridor();
-            }
-            else
-            {
-                SpawnRoom();
-            }
-            spawned = true;
+             SpawnRoom();  // Просто спавним комнату
+             spawned = true;
         }
     }
 
-    private void SpawnCorridor()
+    private void SpawnRoom()
     {
-        if (variants == null) return;
+        GameObject roomToSpawn = null;
 
-        GameObject corridorToSpawn = null;
-
+        // Получаем комнату в зависимости от направления
         switch (direction)
         {
             case Direction.Forward:
-                corridorToSpawn = variants.forwardCorridor;
+                roomToSpawn = variants.ForwardRooms[Random.Range(0, variants.ForwardRooms.Length)];
                 break;
             case Direction.Back:
-                corridorToSpawn = variants.backCorridor;
+                roomToSpawn = variants.BackRooms[Random.Range(0, variants.BackRooms.Length)];
                 break;
             case Direction.Right:
-                corridorToSpawn = variants.rightCorridor;
+                roomToSpawn = variants.RightRooms[Random.Range(0, variants.RightRooms.Length)];
                 break;
             case Direction.Left:
-                corridorToSpawn = variants.leftCorridor;
+                roomToSpawn = variants.LeftRooms[Random.Range(0, variants.LeftRooms.Length)];
+                break;
+            case Direction.Main:
+                roomToSpawn = variants.MainRoom[Random.Range(0, variants.MainRoom.Length)];
+                break;
+            case Direction.None:
+                Debug.LogWarning("Direction is None, spawning a random room.");
+                roomToSpawn = variants.MainRoom[Random.Range(0, variants.MainRoom.Length)]; // Или другой вариант по умолчанию
                 break;
         }
+    
 
-        if (corridorToSpawn != null)
-        {
-            GameObject existingRoomOrCorridor = CheckForExistingRoomOrCorridor(transform.position, checkRadius);
-
-            if (existingRoomOrCorridor == null)
-            {
-                Instantiate(corridorToSpawn, transform.position, transform.rotation);
-            }
-            else
-            {
-                Destroy(gameObject); //Уничтожаем только новый спавнер, если есть коллизия
-            }
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-    }
-    private void SpawnRoom()
+        if (roomToSpawn != null)
     {
-        if (variants == null) return;
-
-        GameObject roomObj = null;
-
-        if (direction == Direction.Forward && variants.forwardRooms != null && variants.forwardRooms.Length > 0)
-        {
-            rand = Random.Range(0, variants.forwardRooms.Length);
-            roomObj = variants.forwardRooms[rand];
-        }
-        else if (direction == Direction.Back && variants.backRooms != null && variants.backRooms.Length > 0)
-        {
-            rand = Random.Range(0, variants.backRooms.Length);
-            roomObj = variants.backRooms[rand];
-        }
-        else if (direction == Direction.Right && variants.rightRooms != null && variants.rightRooms.Length > 0)
-        {
-            rand = Random.Range(0, variants.rightRooms.Length);
-            roomObj = variants.rightRooms[rand];
-        }
-        else if (direction == Direction.Left && variants.leftRooms != null && variants.leftRooms.Length > 0)
-        {
-            rand = Random.Range(0, variants.leftRooms.Length);
-            roomObj = variants.leftRooms[rand];
-        }
-        else if (direction == Direction.Main)
-        {
-            roomObj = variants.MainRoom;
-        }
-
-        if (roomObj != null)
-        {
-            GameObject existingRoomOrCorridor = CheckForExistingRoomOrCorridor(transform.position, checkRadius);
-
-            if (existingRoomOrCorridor == null)
-            {
-                Instantiate(roomObj, transform.position, transform.rotation);
-                roomCount++;
-            }
-            else
-            {
-                Destroy(gameObject); //Уничтожаем только новый спавнер
-            }
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-    }
-
-    private GameObject CheckForExistingRoomOrCorridor(Vector3 position, float radius)
-    {
-        Collider[] colliders = Physics.OverlapSphere(position, radius);
+        // Улучшенная проверка коллизий - игнорируем самого себя
+        Collider[] colliders = Physics.OverlapSphere(transform.position, checkRadius);
+        bool collision = false;
+        
         foreach (Collider collider in colliders)
         {
-            if (collider.gameObject != gameObject && (collider.gameObject.CompareTag("Room") || collider.gameObject.CompareTag("Corridor")))
+            // Игнорируем триггеры и самого себя
+            if (collider.isTrigger) continue;
+            if (collider.gameObject == gameObject) continue;
+            
+            if (collider.GetComponent<RoomsSpawner>() != null || 
+                collider.CompareTag("Room") || 
+                collider.CompareTag("RoomPoint"))
             {
-                return collider.gameObject;
+                collision = true;
+                break;
             }
         }
-        return null;
-    }
 
+        if (!collision)
+        {
+            GameObject newRoom = Instantiate(roomToSpawn, transform.position, roomToSpawn.transform.rotation);
+            roomCount++;
+            Debug.Log($"Spawned {direction} room. Total rooms: {roomCount}");
+        }
+        else
+        {
+            Debug.Log($"Collision detected at {transform.position}. Not spawning room.");
+        }
+
+        Destroy(gameObject);
+    }
+    else
+    {
+        Debug.LogError("No room to spawn for direction: " + direction);
+        Destroy(gameObject);
+    }
+    } 
 
     private void OnTriggerEnter(Collider other)
     {
