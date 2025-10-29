@@ -661,6 +661,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Blaster
       objectReference: {fileID: 0}
+    - target: {fileID: 1583231391869014090, guid: 3d5acc82bc4669b4c93feb3c2f7bb820, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1937902735860179194, guid: 3d5acc82bc4669b4c93feb3c2f7bb820, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -1558,7 +1562,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6267839202413536520, guid: fd635cbb2d19b4141ba30aef48c0b411, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.45000076
+      value: -0.737
       objectReference: {fileID: 0}
     - target: {fileID: 6267839202413536520, guid: fd635cbb2d19b4141ba30aef48c0b411, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1566,7 +1570,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6267839202413536520, guid: fd635cbb2d19b4141ba30aef48c0b411, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.485
+      value: 1.33
       objectReference: {fileID: 0}
     - target: {fileID: 6267839202413536520, guid: fd635cbb2d19b4141ba30aef48c0b411, type: 3}
       propertyPath: m_LocalRotation.w
