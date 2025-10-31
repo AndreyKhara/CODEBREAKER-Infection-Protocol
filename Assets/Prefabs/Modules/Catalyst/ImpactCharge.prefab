@@ -127,7 +127,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ImpactCharge
   gameObjectOnGun: {fileID: 4853612683545968841, guid: affa6d27bbf98f54c8298a79217924b9, type: 3}
-  aoeRadius: 1
-  aoeDamage: 10
-  impactEffectPrefab: {fileID: 4548883987729005328, guid: 62b48a02ccea14b6496fc37a70d45714, type: 3}
-  _prefabBullet: {fileID: 2227547111498054571, guid: f9ee2e82ffd18ab4b9b686b416c1d1be, type: 3}
+  _prefabBullet: {fileID: 4159634918090844766, guid: 4f122ba2d77eca743a7932efe21b9087, type: 3}
