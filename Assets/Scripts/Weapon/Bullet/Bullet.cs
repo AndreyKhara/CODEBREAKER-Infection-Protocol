@@ -3,24 +3,24 @@ using CDB.Character;
 
 public class Bullet : MonoBehaviour, IProjectile
 {
-    [SerializeField] private float _timeLife = 5f;
     [SerializeField] private float _speed = 50f;
+    [SerializeField] private float _timeLife = 5f;
     [SerializeField] private float _damage = 10f;
     [SerializeField] private Rigidbody _rb;
     
     private float spawnTime;
     private const float COLLISION_DELAY = 0.1f;
 
-    public float TimeLife
-    {
-        get => _timeLife;
-        set => _timeLife = value;
-    }
-
     public float Speed
     {
         get => _speed;
         set => _speed = value;
+    }
+
+    public float TimeLife
+    {
+        get => _timeLife;
+        set => _timeLife = value;
     }
 
     public float Damage
@@ -47,28 +47,39 @@ public class Bullet : MonoBehaviour, IProjectile
 
     private void OnTriggerEnter(Collider other)
     {
-        HandleCollision(other);
+        OnBulletHit(other);
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        HandleCollision(collision.gameObject.GetComponent<Collider>());
+        OnBulletHit(collision.gameObject.GetComponent<Collider>());
     }
 
-    private void HandleCollision(Collider other)
+    protected virtual void OnBulletHit(Collider other)
     {
         // Избегаем срабатывания в момент спауна
         if (Time.time - spawnTime < COLLISION_DELAY) return;
 
-        IHealth health = other.GetComponent<IHealth>();
-        if (health != null)
+        // Наносим урон, если он больше 0
+        if (_damage > 0)
         {
-            health.TakeDamage(Damage);
+            IHealth health = other.GetComponent<IHealth>();
+            if (health != null)
+            {
+                health.TakeDamage(_damage);
+            }
         }
 
-        OnHit(other);
+        // Применяем эффект (переопределяется в дочерних классах)
+        ApplyEffect(other);
+
         Destroy(gameObject);
     }
 
-    protected virtual void OnHit(Collider other) { }
+    protected virtual void ApplyEffect(Collider other)
+    {
+        // По умолчанию никакого эффекта
+    }
+
+    public float GetSpawnTime() => spawnTime;
 }

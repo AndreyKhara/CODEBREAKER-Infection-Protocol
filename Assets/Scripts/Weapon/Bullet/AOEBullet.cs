@@ -4,11 +4,10 @@ using CDB.Character;
 public class AOEBullet : Bullet
 {
     [SerializeField] private float _aoeRadius = 5f;
-    [SerializeField] private float _aoeDamage = 10f;
     [SerializeField] private GameObject _impactEffectPrefab;
     [SerializeField] private LayerMask _damageLayerMask = -1;
 
-    protected override void OnHit(Collider other)
+    protected override void ApplyEffect(Collider other)
     {
         // Создаем эффект взрыва
         if (_impactEffectPrefab != null)
@@ -16,7 +15,7 @@ public class AOEBullet : Bullet
             Instantiate(_impactEffectPrefab, transform.position, Quaternion.identity);
         }
 
-        // Наносим урон всем объектам в радиусе взрыва
+        // Наносим урон в радиусе взрыва
         ApplyAOEDamage();
     }
 
@@ -29,7 +28,7 @@ public class AOEBullet : Bullet
             IHealth health = hitCollider.GetComponent<IHealth>();
             if (health != null)
             {
-                health.TakeDamage(_aoeDamage);
+                health.TakeDamage(Damage);
             }
         }
     }
