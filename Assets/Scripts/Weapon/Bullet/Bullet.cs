@@ -9,7 +9,7 @@ public class Bullet : MonoBehaviour, IProjectile
     [SerializeField] private Rigidbody _rb;
     private float startTime;
     private float spawnTime;
-    public ICatalyst catalyst;
+
 
     public float TimeLife
     {
@@ -47,23 +47,6 @@ public class Bullet : MonoBehaviour, IProjectile
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {   
-        if (Time.time - spawnTime < 0.1f) return;
-
-        IHealth health = collision.gameObject.GetComponent<IHealth>();
-        if (health != null)
-        {
-            health.TakeDamage(Damage);
-        }
-
-        if (catalyst is ImpactCharge impact)
-        {
-            impact.OnHit(collision.contacts[0].point);
-        }
-
-        Destroy(gameObject);
-    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -73,13 +56,11 @@ public class Bullet : MonoBehaviour, IProjectile
         if (health != null)
         {
             health.TakeDamage(Damage);
-        }
-
-        if (catalyst is ImpactCharge impact)
-        {
-            impact.OnHit(other.transform.position);
+            OnHit();
         }
 
         Destroy(gameObject);
     }
+
+    protected virtual void OnHit(){}
 }

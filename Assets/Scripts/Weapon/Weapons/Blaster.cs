@@ -19,12 +19,8 @@ public class Blaster : Gun
 
                 // Создаем пулю
                 //Instantiate(_bulletPrefab, _barrelModule.GunPoint.position, finalRotation);
-                var bulletObj = Instantiate(_bulletPrefab, _projectileSpawner.position, finalRotation);
-                var bullet = bulletObj.GetComponent<Bullet>();
-                if (bullet != null)
-                {
-                    bullet.catalyst = _catalystModule;
-                }
+                Instantiate(_bulletPrefab, _projectileSpawner.position, finalRotation);
+                
             }
             _ammoModule.AmountAmmo -= _barrelModule.ProjectileCount;
         }
