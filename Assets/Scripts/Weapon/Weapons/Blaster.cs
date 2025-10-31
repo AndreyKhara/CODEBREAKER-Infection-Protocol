@@ -33,6 +33,6 @@ public class Blaster : Gun
     public override void Recharge()
     {
         _ammoModule.AmountAmmo = _ammoModule.MaxAmmo;
-        Debug.Log("Recharge");
+        Debug.Log("Recharge blaster");
     }
 }
