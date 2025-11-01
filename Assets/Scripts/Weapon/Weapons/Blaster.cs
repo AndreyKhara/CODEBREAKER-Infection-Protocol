@@ -18,7 +18,6 @@ public class Blaster : Gun
                 Quaternion finalRotation = _projectileSpawner.rotation * spreadRotation;
 
                 // Создаем пулю
-                //Instantiate(_bulletPrefab, _barrelModule.GunPoint.position, finalRotation);
                 Instantiate(_bulletPrefab, _projectileSpawner.position, finalRotation);
                 
             }
