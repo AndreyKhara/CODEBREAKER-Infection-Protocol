@@ -1,14 +1,20 @@
-using System.Reflection;
 using UnityEngine;
 
+/// <summary>
+/// Kinetic Rounds — Стандартные боеприпасы со сбалансированными характеристиками.
+/// Средний урон; средняя скорость полёта; средняя дальность.
+/// </summary>
 public class KineticRounds : Module, IAmmo
 {
+    [Header("Ammo Capacity")]
     [SerializeField] private int _amountMagazines = 1;
     [SerializeField] private int _maxAmmo = 20;
     [SerializeField] private int _amountAmmo = 10;
-    [SerializeField] private float _speed = 50f;
-    [SerializeField] private float _damage = 10f;
     
+    [Header("Ammo Properties - Характеристики снаряда")]
+    [SerializeField] private float _baseDamage = 10f;
+    [SerializeField] private float _projectileSpeed = 50f;
+    [SerializeField] private float _projectileRange = 5f;   // TimeLife пули
 
     public int AmountMagazines
     {
@@ -28,17 +34,7 @@ public class KineticRounds : Module, IAmmo
         set => _maxAmmo = value;
     }
 
-     public float Speed
-    {
-        get => _speed;
-        set => _speed = value;
-    }
-
-    public float Damage
-    {
-        get => _damage;
-        set => _damage = value;
-    }
-
-    
+    public float BaseDamage => _baseDamage * RarityMultiplier;
+    public float ProjectileSpeed => _projectileSpeed * RarityMultiplier;
+    public float ProjectileRange => _projectileRange * RarityMultiplier;
 }
