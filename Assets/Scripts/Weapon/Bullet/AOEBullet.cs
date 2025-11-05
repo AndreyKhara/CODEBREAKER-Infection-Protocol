@@ -12,6 +12,7 @@ public class AOEBullet : Bullet
         // Создаем эффект взрыва
         if (_impactEffectPrefab != null)
         {
+            Debug.Log("Explosion");
             Instantiate(_impactEffectPrefab, transform.position, Quaternion.identity);
         }
 
@@ -21,14 +22,18 @@ public class AOEBullet : Bullet
 
     private void ApplyAOEDamage()
     {
+        // TO DO fix delete Layer 
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, _aoeRadius, _damageLayerMask);
-        
+
         foreach (Collider hitCollider in hitColliders)
         {
-            IHealth health = hitCollider.GetComponent<IHealth>();
-            if (health != null)
+            if (hitCollider.CompareTag("Enemy"))
             {
-                health.TakeDamage(Damage);
+                IHealth health = hitCollider.GetComponent<IHealth>();
+                if (health != null)
+                {
+                    health.TakeDamage(Damage);
+                }
             }
         }
     }

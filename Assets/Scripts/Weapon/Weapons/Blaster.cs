@@ -19,6 +19,7 @@ public class Blaster : Gun
 
                 // Создаем пулю
                 Instantiate(_bulletPrefab, _projectileSpawner.position, finalRotation);
+                Debug.Log(_bulletPrefab);
                 
             }
             _ammoModule.AmountAmmo -= _barrelModule.ProjectileCount;

@@ -34,7 +34,7 @@ public class PulseRounds : Module, IAmmo
         set => _maxAmmo = value;
     }
 
-    public float BaseDamage => _baseDamage * RarityMultiplier;
-    public float ProjectileSpeed => _projectileSpeed * RarityMultiplier;
-    public float ProjectileRange => _projectileRange * RarityMultiplier;
+    public float BaseDamage => _baseDamage;// * RarityMultiplier;
+    public float ProjectileSpeed => _projectileSpeed;// * RarityMultiplier;
+    public float ProjectileRange => _projectileRange;// * RarityMultiplier;*/
 }

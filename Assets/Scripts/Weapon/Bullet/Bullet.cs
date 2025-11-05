@@ -1,6 +1,7 @@
 using UnityEngine;
 using CDB.Character;
 
+
 public class Bullet : MonoBehaviour, IProjectile
 {
     [SerializeField] private float _speed = 50f;
@@ -9,7 +10,6 @@ public class Bullet : MonoBehaviour, IProjectile
     [SerializeField] private Rigidbody _rb;
     
     private float spawnTime;
-    private const float COLLISION_DELAY = 0.1f;
 
     public float Speed
     {
@@ -50,36 +50,24 @@ public class Bullet : MonoBehaviour, IProjectile
         OnBulletHit(other);
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        OnBulletHit(collision.gameObject.GetComponent<Collider>());
-    }
-
     protected virtual void OnBulletHit(Collider other)
-    {
-        // Избегаем срабатывания в момент спауна
-        if (Time.time - spawnTime < COLLISION_DELAY) return;
-
-        // Наносим урон, если он больше 0
-        if (_damage > 0)
+    {   
+        if (other.CompareTag("Enemy"))
         {
             IHealth health = other.GetComponent<IHealth>();
             if (health != null)
             {
                 health.TakeDamage(_damage);
+
             }
+            // TO DO
+            ApplyEffect(other);
+            Destroy(gameObject);
         }
 
-        // Применяем эффект (переопределяется в дочерних классах)
-        ApplyEffect(other);
-
-        Destroy(gameObject);
     }
 
     protected virtual void ApplyEffect(Collider other)
     {
-        // По умолчанию никакого эффекта
     }
-
-    public float GetSpawnTime() => spawnTime;
 }

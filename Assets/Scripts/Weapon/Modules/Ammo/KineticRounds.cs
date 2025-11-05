@@ -1,9 +1,6 @@
 using UnityEngine;
 
-/// <summary>
-/// Kinetic Rounds — Стандартные боеприпасы со сбалансированными характеристиками.
-/// Средний урон; средняя скорость полёта; средняя дальность.
-/// </summary>
+
 public class KineticRounds : Module, IAmmo
 {
     [Header("Ammo Capacity")]
@@ -34,7 +31,7 @@ public class KineticRounds : Module, IAmmo
         set => _maxAmmo = value;
     }
 
-    public float BaseDamage => _baseDamage * RarityMultiplier;
-    public float ProjectileSpeed => _projectileSpeed * RarityMultiplier;
-    public float ProjectileRange => _projectileRange * RarityMultiplier;
+    public float BaseDamage => _baseDamage; //* RarityMultiplier;
+    public float ProjectileSpeed => _projectileSpeed;// * RarityMultiplier;
+    public float ProjectileRange => _projectileRange;// * RarityMultiplier;*/
 }

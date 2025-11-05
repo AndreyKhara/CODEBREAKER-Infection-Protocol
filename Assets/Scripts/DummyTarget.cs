@@ -1,7 +1,8 @@
 using UnityEngine;
-
+using CDB.Character;
 public class DummyTarget : MonoBehaviour, IHealth
-{
+{   
+    // TO DO : _value
     [SerializeField] private float maxHealth = 100f;
     [SerializeField] private float health = 100f;
     [SerializeField] private float respawnDelay = 2f;
@@ -9,6 +10,17 @@ public class DummyTarget : MonoBehaviour, IHealth
     [SerializeField] private Color damageColor = Color.red;
     [SerializeField] private Color normalColor = Color.white;
 
+
+    public float MaxHealth
+    {
+        get => maxHealth;
+        set => maxHealth = value;
+    } 
+    public float CurrentHealth
+    {
+        get => health;
+        set => health = value;
+    }
     private void Start()
     {
         if (targetRenderer == null)
@@ -17,29 +29,11 @@ public class DummyTarget : MonoBehaviour, IHealth
         UpdateColor(normalColor);
     }
 
-    private void OnGUI()
-    {
-        // Показываем здоровье над объектом
-        if (Camera.main == null)
-            return;
-        Vector3 screenPos = Camera.main.WorldToScreenPoint(transform.position + Vector3.up * 1.5f);
-        if (screenPos.z > 0)
-        {
-            GUI.Label(new Rect(screenPos.x - 40, Screen.height - screenPos.y, 80, 20), $"HP: {health}/{maxHealth}");
-        }
-    }
-
     public void OnCollisionEnter(Collision collision)
     {
         Debug.Log($"DummyTarget: OnCollisionEnter с {collision.gameObject.name}");
     }
 
-    public void OnTriggerEnter(Collider other)
-    {
-        Debug.Log($"DummyTarget: OnTriggerEnter с {other.gameObject.name}");
-    }
-
-    // Реализация IHealth для совместимости с Bullet
     public void TakeDamage(float amount)
     {
         ApplyDamage(amount);
@@ -52,7 +46,7 @@ public class DummyTarget : MonoBehaviour, IHealth
         ShowDamage();
         if (health <= 0)
         {
-            Die();
+            Death();
         }
     }
 
@@ -79,7 +73,7 @@ public class DummyTarget : MonoBehaviour, IHealth
         }
     }
 
-    private void Die()
+    public void Death()
     {
         Debug.Log("DummyTarget уничтожен! Восстановление через " + respawnDelay + " сек.");
         if (targetRenderer != null)
@@ -96,5 +90,9 @@ public class DummyTarget : MonoBehaviour, IHealth
             UpdateColor(normalColor);
         }
         Debug.Log("DummyTarget восстановлен!");
+    }
+    public void Heal(float amount)
+    {
+        
     }
 }

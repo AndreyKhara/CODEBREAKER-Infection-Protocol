@@ -4,8 +4,7 @@ public abstract class Module : MonoBehaviour
 {
     public GameObject gameObjectOnGun;
     
-    [Header("Module Properties")]
-    [SerializeField] protected ModuleRarity _rarity = ModuleRarity.Common;
+    /*[SerializeField] protected ModuleRarity _rarity = ModuleRarity.Common;
     
     public ModuleRarity Rarity => _rarity;
     
@@ -27,5 +26,5 @@ public abstract class Module : MonoBehaviour
                 _ => 1.0f
             };
         }
-    }
+    }*/
 }

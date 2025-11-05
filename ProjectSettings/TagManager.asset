@@ -10,6 +10,7 @@ TagManager:
   - TriggerRoom
   - Corridors
   - Module
+  - Enemy
   layers:
   - Default
   - TransparentFX
