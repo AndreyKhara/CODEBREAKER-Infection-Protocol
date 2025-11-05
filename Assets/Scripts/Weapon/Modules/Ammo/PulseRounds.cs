@@ -1,17 +1,20 @@
 using UnityEngine;
 
-
-public class KineticRounds : Module, IAmmo
+/// <summary>
+/// Pulse Rounds — Лёгкие боеприпасы с ускоренным импульсом.
+/// Скорость полёта +20%; -15% урон.
+/// </summary>
+public class PulseRounds : Module, IAmmo
 {
     [Header("Ammo Capacity")]
     [SerializeField] private int _amountMagazines = 1;
-    [SerializeField] private int _maxAmmo = 20;
-    [SerializeField] private int _amountAmmo = 10;
+    [SerializeField] private int _maxAmmo = 25;
+    [SerializeField] private int _amountAmmo = 15;
     
     [Header("Ammo Properties - Характеристики снаряда")]
-    [SerializeField] private float _baseDamage = 10f;
-    [SerializeField] private float _projectileSpeed = 50f;
-    [SerializeField] private float _projectileRange = 5f;   // TimeLife пули
+    [SerializeField] private float _baseDamage = 8.5f;          // -15% урон
+    [SerializeField] private float _projectileSpeed = 60f;      // +20% скорость
+    [SerializeField] private float _projectileRange = 5f;
 
     public int AmountMagazines
     {
@@ -31,7 +34,7 @@ public class KineticRounds : Module, IAmmo
         set => _maxAmmo = value;
     }
 
-    public float BaseDamage => _baseDamage; //* RarityMultiplier;
+    public float BaseDamage => _baseDamage;// * RarityMultiplier;
     public float ProjectileSpeed => _projectileSpeed;// * RarityMultiplier;
     public float ProjectileRange => _projectileRange;// * RarityMultiplier;*/
 }

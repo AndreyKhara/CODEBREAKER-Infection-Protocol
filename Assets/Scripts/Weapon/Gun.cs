@@ -81,8 +81,10 @@ public class Gun : MonoBehaviour, IWeapon
             IProjectile ibullet = _bulletPrefab.GetComponent<IProjectile>();
             if (_ammoModule != null)
             {
-                ibullet.Damage = _ammoModule.Damage;
-                ibullet.Speed = _ammoModule.Speed;
+                // Применяем параметры ТОЛЬКО от Ammo (урон, скорость, дальность)
+                ibullet.Damage = _ammoModule.BaseDamage;
+                ibullet.Speed = _ammoModule.ProjectileSpeed;
+                ibullet.TimeLife = _ammoModule.ProjectileRange;
             }
             else Debug.Log("No ammo module");
         }
