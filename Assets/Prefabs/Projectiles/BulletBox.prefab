@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 465346258140358370}
   - component: {fileID: 829376792302791143}
   - component: {fileID: 5556354295961319932}
-  - component: {fileID: 517456311947045077}
   - component: {fileID: 19525028492408453}
   - component: {fileID: 441730294114017997}
+  - component: {fileID: 3133677407477791503}
   m_Layer: 0
   m_Name: BulletBox
   m_TagString: Untagged
@@ -92,22 +92,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &517456311947045077
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8635179893654266680}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce50c4abfd5288344b6667d615a12dab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Bullet
-  _timeLife: 5
-  _speed: 2
-  _damage: 10
-  _rb: {fileID: 19525028492408453}
 --- !u!54 &19525028492408453
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -156,3 +140,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1.0000002, z: 1.0000002}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &3133677407477791503
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8635179893654266680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce50c4abfd5288344b6667d615a12dab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Bullet
+  _speed: 50
+  _timeLife: 5
+  _damage: 10
+  _rb: {fileID: 19525028492408453}

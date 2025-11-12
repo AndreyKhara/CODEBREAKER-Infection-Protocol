@@ -6,6 +6,7 @@ public interface IAmmo
     int MaxAmmo { get; set; }
     int AmountAmmo { get; set; }
 
-    float Speed { get; set; }
-    float Damage{ get; set; }
+    float BaseDamage { get; }           // Базовый урон снаряда
+    float ProjectileSpeed { get; }      // Скорость полета снаряда
+    float ProjectileRange { get; }      // Дальность полета (timeLife)
 }

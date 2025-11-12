@@ -1,4 +1,3 @@
-
 using System.Reflection;
 using UnityEngine;
 
@@ -19,8 +18,9 @@ public class Blaster : Gun
                 Quaternion finalRotation = _projectileSpawner.rotation * spreadRotation;
 
                 // Создаем пулю
-                //Instantiate(_bulletPrefab, _barrelModule.GunPoint.position, finalRotation);
                 Instantiate(_bulletPrefab, _projectileSpawner.position, finalRotation);
+                Debug.Log(_bulletPrefab);
+                
             }
             _ammoModule.AmountAmmo -= _barrelModule.ProjectileCount;
         }
@@ -33,6 +33,6 @@ public class Blaster : Gun
     public override void Recharge()
     {
         _ammoModule.AmountAmmo = _ammoModule.MaxAmmo;
-        Debug.Log("Recharge");
+        Debug.Log("Recharge blaster");
     }
 }
