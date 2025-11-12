@@ -1,98 +1,67 @@
 using UnityEngine;
-using CDB.Character;
-public class DummyTarget : MonoBehaviour, IHealth
-{   
-    // TO DO : _value
-    [SerializeField] private float maxHealth = 100f;
-    [SerializeField] private float health = 100f;
-    [SerializeField] private float respawnDelay = 2f;
-    [SerializeField] private Renderer targetRenderer;
-    [SerializeField] private Color damageColor = Color.red;
-    [SerializeField] private Color normalColor = Color.white;
+
+namespace CDB.Character.Enemy
+{
+    public class DummyTarget : EnemyBase
+    {
+        // TO DO : _value
+        [SerializeField] private float _respawnDelay = 2f;
+        [SerializeField] private Renderer _targetRenderer;
+        [SerializeField] private Color _damageColor = Color.red;
+        [SerializeField] private Color _normalColor = Color.white;
 
 
-    public float MaxHealth
-    {
-        get => maxHealth;
-        set => maxHealth = value;
-    } 
-    public float CurrentHealth
-    {
-        get => health;
-        set => health = value;
-    }
-    private void Start()
-    {
-        if (targetRenderer == null)
-            targetRenderer = GetComponent<Renderer>();
-        health = maxHealth;
-        UpdateColor(normalColor);
-    }
-
-    public void OnCollisionEnter(Collision collision)
-    {
-        Debug.Log($"DummyTarget: OnCollisionEnter с {collision.gameObject.name}");
-    }
-
-    public void TakeDamage(float amount)
-    {
-        ApplyDamage(amount);
-    }
-
-    private void ApplyDamage(float amount)
-    {
-        health -= amount;
-        Debug.Log($"DummyTarget получил урон: {amount}, осталось здоровья: {health}");
-        ShowDamage();
-        if (health <= 0)
+        private void Start()
         {
-            Death();
+            UpdateColor(_normalColor);
         }
-    }
 
-    private void ShowDamage()
-    {
-        if (targetRenderer != null)
+        public void OnCollisionEnter(Collision collision)
         {
-            UpdateColor(damageColor);
+            Debug.Log($"DummyTarget: OnCollisionEnter с {collision.gameObject.name}");
+        }
+
+        public override void TakeDamage(float damageAmount)
+        {
+            CurrentHealth -= damageAmount;
+            Debug.Log($"DummyTarget получил урон: {damageAmount}, осталось здоровья: {CurrentHealth}");
+            ShowDamage();
+            if (CurrentHealth <= 0)
+            {
+                Death();
+            }
+        }
+
+        private void ShowDamage()
+        {
+            UpdateColor(_damageColor);
             CancelInvoke(nameof(ResetColor));
             Invoke(nameof(ResetColor), 0.2f);
         }
-    }
 
-    private void ResetColor()
-    {
-        UpdateColor(normalColor);
-    }
-
-    private void UpdateColor(Color color)
-    {
-        if (targetRenderer != null)
+        private void ResetColor()
         {
-            targetRenderer.material.color = color;
+            UpdateColor(_normalColor);
         }
-    }
 
-    public void Death()
-    {
-        Debug.Log("DummyTarget уничтожен! Восстановление через " + respawnDelay + " сек.");
-        if (targetRenderer != null)
-            targetRenderer.enabled = false;
-        Invoke(nameof(Respawn), respawnDelay);
-    }
-
-    private void Respawn()
-    {
-        health = maxHealth;
-        if (targetRenderer != null)
+        private void UpdateColor(Color color)
         {
-            targetRenderer.enabled = true;
-            UpdateColor(normalColor);
+            _targetRenderer.material.color = color;
+
         }
-        Debug.Log("DummyTarget восстановлен!");
-    }
-    public void Heal(float amount)
-    {
-        
+
+        public override void Death()
+        {
+            Debug.Log("DummyTarget уничтожен! Восстановление через " + _respawnDelay + " сек.");
+            _targetRenderer.enabled = false;
+            Invoke(nameof(Respawn), _respawnDelay);
+        }
+        private void Respawn()
+        {
+            CurrentHealth = MaxHealth;
+            _targetRenderer.enabled = true;
+            UpdateColor(_normalColor);
+            Debug.Log("DummyTarget восстановлен!");
+        }
     }
 }

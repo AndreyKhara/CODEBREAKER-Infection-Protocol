@@ -734,6 +734,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6267839202413536520, guid: fd635cbb2d19b4141ba30aef48c0b411, type: 3}
   m_PrefabInstance: {fileID: 5986431541749820857}
   m_PrefabAsset: {fileID: 0}
+--- !u!23 &474287815 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 1787489518346476962, guid: f09d1cb4013604ab5abfd390f8e82497, type: 3}
+  m_PrefabInstance: {fileID: 1623119890}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &578916195
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1705,6 +1710,14 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 6960813902407036257, guid: f09d1cb4013604ab5abfd390f8e82497, type: 3}
+      propertyPath: _maxHealth
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 6960813902407036257, guid: f09d1cb4013604ab5abfd390f8e82497, type: 3}
+      propertyPath: _targetRenderer
+      value: 
+      objectReference: {fileID: 474287815}
     - target: {fileID: 8846328324173568622, guid: f09d1cb4013604ab5abfd390f8e82497, type: 3}
       propertyPath: m_LocalPosition.x
       value: -27.035
