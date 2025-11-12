@@ -8,9 +8,9 @@ TagManager:
   - RoomPoint
   - CorridorPoint
   - TriggerRoom
-  - Corridors
   - Module
-  - Enemy
+  - CorridorEnd
+  - Corridors
   layers:
   - Default
   - TransparentFX
