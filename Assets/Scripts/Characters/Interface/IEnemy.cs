@@ -6,7 +6,7 @@ namespace CDB.Character.Enemy
     {
         float Speed { get; set; }
         float Damage { get; set; }
-        void Attack();
+        void Attack(IHealth health);
 
 
     }

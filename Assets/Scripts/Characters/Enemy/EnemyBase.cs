@@ -14,7 +14,6 @@ namespace CDB.Character.Enemy
             CurrentHealth = MaxHealth;
         }
 
-
         //health
         public float MaxHealth
         {
@@ -52,10 +51,11 @@ namespace CDB.Character.Enemy
             }
         }
 
-        public virtual void Attack()
+        public virtual void Attack(IHealth health)
         {
-
+            health.TakeDamage(Damage);
         }
+        
 
         public virtual void Heal(float healAmount)
         {
@@ -65,7 +65,7 @@ namespace CDB.Character.Enemy
 
         public virtual void Death()
         {
-            Debug.Log("Враг умэрр");
+            Destroy(gameObject);
         }
         // #health
 

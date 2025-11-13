@@ -37,6 +37,7 @@ namespace CDB.Character
             {
                 Death();
             }
+            Debug.Log($"Hp player : {CurrentHealth}");
         }
 
         public void Heal(float healAmount)
