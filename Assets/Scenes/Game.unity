@@ -1171,7 +1171,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3717532146461811080, guid: d8c8b079b6653bd43b60de1acdcf298f, type: 3}
       propertyPath: _maxHealth
-      value: 1000
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 3717532146461811080, guid: d8c8b079b6653bd43b60de1acdcf298f, type: 3}
       propertyPath: _playerTrf
@@ -1204,6 +1204,10 @@ PrefabInstance:
     - target: {fileID: 6270143022944379016, guid: d8c8b079b6653bd43b60de1acdcf298f, type: 3}
       propertyPath: m_Name
       value: CorruptByte (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6270143022944379016, guid: d8c8b079b6653bd43b60de1acdcf298f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8061849243978851265, guid: d8c8b079b6653bd43b60de1acdcf298f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1996,7 +2000,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3717532146461811080, guid: d8c8b079b6653bd43b60de1acdcf298f, type: 3}
       propertyPath: _maxHealth
-      value: 1000
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 3717532146461811080, guid: d8c8b079b6653bd43b60de1acdcf298f, type: 3}
       propertyPath: _playerTrf
@@ -2029,6 +2033,10 @@ PrefabInstance:
     - target: {fileID: 6270143022944379016, guid: d8c8b079b6653bd43b60de1acdcf298f, type: 3}
       propertyPath: m_Name
       value: CorruptByte (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6270143022944379016, guid: d8c8b079b6653bd43b60de1acdcf298f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8061849243978851265, guid: d8c8b079b6653bd43b60de1acdcf298f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2122,6 +2130,10 @@ PrefabInstance:
     - target: {fileID: 3717532146461811080, guid: d8c8b079b6653bd43b60de1acdcf298f, type: 3}
       propertyPath: _stopDistance
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3717532146461811080, guid: d8c8b079b6653bd43b60de1acdcf298f, type: 3}
+      propertyPath: _coolDawnAttack
+      value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: 4923033998841685698, guid: d8c8b079b6653bd43b60de1acdcf298f, type: 3}
       propertyPath: m_Size.x

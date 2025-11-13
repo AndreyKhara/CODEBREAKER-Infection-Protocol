@@ -14,7 +14,6 @@ namespace CDB.Character.Enemy
             CurrentHealth = MaxHealth;
         }
 
-        //health
         public float MaxHealth
         {
             get => _maxHealth;
@@ -67,7 +66,6 @@ namespace CDB.Character.Enemy
         {
             Destroy(gameObject);
         }
-        // #health
 
     }
 }

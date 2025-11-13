@@ -22,7 +22,7 @@ namespace CDB.Character.Enemy
             _playerTrf = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         }
 
-        private void OnTriggerEnter(Collider other)
+        private void OnTriggerStay(Collider other)
         {
             if (!_coolDawn)
             {
@@ -33,8 +33,6 @@ namespace CDB.Character.Enemy
                     StartCoolDawn().Forget();
                 }
             }
-
-
         }
 
         private async UniTask StartCoolDawn()
