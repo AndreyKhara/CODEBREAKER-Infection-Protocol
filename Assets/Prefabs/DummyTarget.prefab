@@ -126,9 +126,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a34ff917cea5f4c88af31acc647e5305, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DummyTarget
-  maxHealth: 100
-  health: 100
-  respawnDelay: 2
-  targetRenderer: {fileID: 1787489518346476962}
-  damageColor: {r: 1, g: 0, b: 0, a: 1}
-  normalColor: {r: 1, g: 1, b: 1, a: 1}
+  _maxHealth: 100
+  _moveSpeed: 0
+  _damage: 0
+  _respawnDelay: 2
+  _targetRenderer: {fileID: 1787489518346476962}
+  _damageColor: {r: 1, g: 0, b: 0, a: 1}
+  _normalColor: {r: 1, g: 1, b: 1, a: 1}
