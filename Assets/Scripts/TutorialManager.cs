@@ -20,10 +20,10 @@ namespace CDB.Tutorial
         [SerializeField] private string _tutorialMessage = 
             "Добро пожаловать в CODEBREAKER: Infection Protocol!\n\n" +
             "Управление:\n" +
-            "• WASD - Движение\n" +
-            "• Мышь - Осмотр\n" +
-            "• ЛКМ - Стрельба\n" +
-            "• Пробел - Прыжок\n\n" +
+            "WASD - Движение\n" +
+            "Мышь - Осмотр\n" +
+            "ЛКМ - Стрельба\n" +
+            "Пробел - Прыжок\n\n" +
             "Пройдите к порталу, чтобы начать игру!";
 
         [Header("Settings")]
