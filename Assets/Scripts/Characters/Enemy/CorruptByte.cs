@@ -35,6 +35,8 @@ namespace CDB.Character.Enemy
             }
         }
 
+        
+
         private async UniTask StartCoolDawn()
         {
             await UniTask.Delay(TimeSpan.FromSeconds(_coolDawnAttack), ignoreTimeScale: false);

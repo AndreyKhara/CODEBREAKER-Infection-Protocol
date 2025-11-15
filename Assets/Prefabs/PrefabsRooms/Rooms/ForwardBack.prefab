@@ -281,6 +281,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ForvardCorridor
       objectReference: {fileID: 0}
+    - target: {fileID: 8350587232807253562, guid: ff6a6cae9eef5ce4986f20df9c2ad246, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 1901b0f0a60ecde4a83bfaf79ffe6d3e, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -343,6 +347,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6917236010927150905, guid: 8b27e6d7a3bbfbe4b84e6e6cc68237e4, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 1901b0f0a60ecde4a83bfaf79ffe6d3e, type: 2}
     - target: {fileID: 8213445840243153071, guid: 8b27e6d7a3bbfbe4b84e6e6cc68237e4, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0
@@ -737,6 +745,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: top
       objectReference: {fileID: 0}
+    - target: {fileID: 8685449375477878252, guid: f24102551300a4f4ca60d2896966d54f, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 337d65cbf6872204babcdd4ef4b8e804, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -821,6 +833,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1385183847239040622}
     m_Modifications:
+    - target: {fileID: 1424681375377462150, guid: 1ff8df40f56c3b54b8419799f03b8ddf, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 1901b0f0a60ecde4a83bfaf79ffe6d3e, type: 2}
     - target: {fileID: 2292467661106264721, guid: 1ff8df40f56c3b54b8419799f03b8ddf, type: 3}
       propertyPath: m_Name
       value: floor
