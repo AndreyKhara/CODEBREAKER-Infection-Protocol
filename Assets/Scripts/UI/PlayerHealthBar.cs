@@ -6,6 +6,7 @@ namespace CDB.UI
     /// <summary>
     /// Управляет отображением полоски здоровья игрока
     /// </summary>
+    // TO DO 
     public class PlayerHealthBar : MonoBehaviour
     {
         [Header("UI References")]
@@ -43,7 +44,6 @@ namespace CDB.UI
 
         private void Awake()
         {
-            ValidateComponents();
             
             if (_healthBarFill != null)
             {
@@ -156,21 +156,6 @@ namespace CDB.UI
             ApplyFillAmount(healthPercent);
             UpdateHealthColor(healthPercent);
         }
-
-        /// <summary>
-        /// Проверка наличия необходимых компонентов
-        /// </summary>
-        private void ValidateComponents()
-        {
-            if (_healthBarFill == null)
-            {
-                Debug.LogError("PlayerHealthBar: Health Bar Fill Image не назначен!");
-            }
-
-            if (_healthBarBackground == null)
-            {
-                Debug.LogWarning("PlayerHealthBar: Health Bar Background Image не назначен.");
-            }
-        }
+        
     }
 }
