@@ -507,15 +507,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6267839202413536520, guid: fd635cbb2d19b4141ba30aef48c0b411, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.737
+      value: 0.74
       objectReference: {fileID: 0}
     - target: {fileID: 6267839202413536520, guid: fd635cbb2d19b4141ba30aef48c0b411, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.121
+      value: -0.386
       objectReference: {fileID: 0}
     - target: {fileID: 6267839202413536520, guid: fd635cbb2d19b4141ba30aef48c0b411, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.33
+      value: 0.841
       objectReference: {fileID: 0}
     - target: {fileID: 6267839202413536520, guid: fd635cbb2d19b4141ba30aef48c0b411, type: 3}
       propertyPath: m_LocalRotation.w
@@ -553,7 +553,22 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8082045950845220963, guid: fd635cbb2d19b4141ba30aef48c0b411, type: 3}
+      propertyPath: _ammoStock
+      value: 
+      objectReference: {fileID: 9133079235098003887, guid: c7dbcce0cd25dbe4b9b7b2bfd293b5b7, type: 3}
+    - target: {fileID: 8082045950845220963, guid: fd635cbb2d19b4141ba30aef48c0b411, type: 3}
+      propertyPath: _barrelStock
+      value: 
+      objectReference: {fileID: 5413830935220323595, guid: 18c07cb0730834c409a7c5f6680c2037, type: 3}
+    - target: {fileID: 8082045950845220963, guid: fd635cbb2d19b4141ba30aef48c0b411, type: 3}
+      propertyPath: _catalystStock
+      value: 
+      objectReference: {fileID: 2327943474791936486, guid: ab9adcbaf958d3a4abc268f2cbbb1346, type: 3}
+    m_RemovedComponents:
+    - {fileID: 2963645072360796815, guid: fd635cbb2d19b4141ba30aef48c0b411, type: 3}
+    - {fileID: 7954740720691590592, guid: fd635cbb2d19b4141ba30aef48c0b411, type: 3}
+    - {fileID: 3335423446708055133, guid: fd635cbb2d19b4141ba30aef48c0b411, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -587,7 +602,7 @@ PrefabInstance:
     - target: {fileID: -5096249448582047979, guid: 3d5acc82bc4669b4c93feb3c2f7bb820, type: 3}
       propertyPath: _barrelStock
       value: 
-      objectReference: {fileID: 6908292133831054847, guid: 28273de2f17373943986a047b13f0804, type: 3}
+      objectReference: {fileID: 5413830935220323595, guid: 18c07cb0730834c409a7c5f6680c2037, type: 3}
     - target: {fileID: -5096249448582047979, guid: 3d5acc82bc4669b4c93feb3c2f7bb820, type: 3}
       propertyPath: _catalystStock
       value: 

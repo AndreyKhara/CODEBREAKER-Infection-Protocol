@@ -8,9 +8,7 @@ using System;
 
 public class AddRoom : MonoBehaviour
 {
-   [Header("Walls")]
-   public GameObject[] walls;
-   //public GameObject door;
+   [SerializeField] private GameObject door;
 
    [Header("Enemies")]
    public GameObject[] enemyTypes;
@@ -31,12 +29,12 @@ public class AddRoom : MonoBehaviour
         if (other.CompareTag("Player") && !spawned)
         {
             spawned = true;
-
+            door.SetActive(true);
             foreach (Transform spawner in enemySpawners)
             {
                 GameObject enemyType = enemyTypes[UnityEngine.Random.Range(0, enemyTypes.Length)];
                 GameObject enemy = Instantiate(enemyType, spawner.position, Quaternion.identity) as GameObject;
-                //enemy.transform.parent = transform;
+                enemy.transform.SetParent(transform, true);
                 enemies.Add(enemy);
             }
             CheckEnemies().Forget();
@@ -54,6 +52,7 @@ public class AddRoom : MonoBehaviour
         }
         else
         {
+            Debug.Log($"Check Enemies enemies: {enemies.Count}");
             CheckEnemies();
 
         }
@@ -65,21 +64,18 @@ public class AddRoom : MonoBehaviour
        
     }*/
     public void DestroyWalls(){
-        //Debug.Log("void Destroy Walls");
-        foreach (GameObject wall in walls)
-        {
-            Destroy(wall);
-        }
-
+        Debug.Log("void Destroy Walls");
+       
+        Destroy(door);
         wallsDestroyed = true;
         //Destroy(gameObject);
         
     }
 
-   private void OnTriggerStay2D(Collider2D other) {
+   /*private void OnTriggerStay2D(Collider2D other) {
         if (wallsDestroyed && other.CompareTag("Wall")){
             Destroy(other.gameObject);
         }
     }
-   
+   */
 }
