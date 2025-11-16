@@ -1059,19 +1059,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 650871125}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 615926775}
-        m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
-        m_MethodName: LoadMainMenu
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &650871125
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1222,7 +1210,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.PlayerInput
   m_Actions: {fileID: -944628639613478452, guid: d19f1155af66afe4d85bac60c5b6039d, type: 3}
-  m_NotificationBehavior: 2
+  m_NotificationBehavior: 0
   m_UIInputModule: {fileID: 0}
   m_DeviceLostEvent:
     m_PersistentCalls:
@@ -1233,42 +1221,10 @@ MonoBehaviour:
   m_ControlsChangedEvent:
     m_PersistentCalls:
       m_Calls: []
-  m_ActionEvents:
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: dbe0e600-8cfb-4e4e-aff7-54288e3047e0
-    m_ActionName: 'Player/Move[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]'
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 04a047de-965a-4ab1-bb57-38f75bf762b4
-    m_ActionName: 'Player/CameraControl[/Mouse/delta]'
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 64865f88-2d49-438f-91dd-874f0d0f3e72
-    m_ActionName: 'Player/Jump[/Keyboard/space]'
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 3bbeb01f-6b33-4501-8261-c23023c9a10d
-    m_ActionName: 'Player/Shoot[/Mouse/leftButton]'
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 83527bd3-dae2-4edd-847f-5134ff1aae58
-    m_ActionName: 'Player/ChangeWeapon[/Mouse/scroll]'
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: f713cbc3-9a1b-45aa-bf44-bfd411b38188
-    m_ActionName: 'Player/Recharge[/Keyboard/r]'
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 6cffd175-4bdf-4564-bc83-8401ada1c80a
-    m_ActionName: 'Player/Pause[/Keyboard/escape]'
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 0ee69bf1-d8d0-45f7-a028-7428a3d9a8a5
-    m_ActionName: 'UI/Cancel[/Keyboard/escape]'
+  m_ActionEvents: []
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: Player
+  m_DefaultActionMap: 
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!1001 &1005995688
@@ -2741,19 +2697,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2002426630}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 615926775}
-        m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
-        m_MethodName: Resume
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &2002426630
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3363,8 +3307,8 @@ SceneRoots:
   - {fileID: 589370719}
   - {fileID: 1623119890}
   - {fileID: 179614229}
-  - {fileID: 615926776}
   - {fileID: 1190380453}
   - {fileID: 1879133700996647192}
   - {fileID: 2109802255}
   - {fileID: 1060079138}
+  - {fileID: 615926776}
