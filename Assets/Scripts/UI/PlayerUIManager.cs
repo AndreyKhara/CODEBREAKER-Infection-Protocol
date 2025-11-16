@@ -32,10 +32,9 @@ namespace CDB.UI
 
         private void Start()
         {
-            // Инициализация healthBar с текущими значениями здоровья игрока
             if (_healthBar != null && _player != null)
             {
-                _healthBar.SetHealthImmediate(_player.CurrentHealth, _player.MaxHealth);
+                _healthBar.UpdateHealth(_player.CurrentHealth, _player.MaxHealth);
             }
         }
 
