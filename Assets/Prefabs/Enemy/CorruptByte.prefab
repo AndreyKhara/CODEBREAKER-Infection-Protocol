@@ -206,9 +206,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7882fed6749784f43b8d28986bf02cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CDB.Character.Enemy.CorruptByte
-  _maxHealth: 30
+  _maxHealth: 150
   _moveSpeed: 1
   _damage: 10
+  _modules:
+  - {fileID: 8986022734107799168, guid: c7dbcce0cd25dbe4b9b7b2bfd293b5b7, type: 3}
+  - {fileID: 1243270595594469135, guid: 28273de2f17373943986a047b13f0804, type: 3}
+  - {fileID: 1243270595594469135, guid: 0dea8ba5d4f0c4b7bab2c040191c2703, type: 3}
+  - {fileID: 2262541084605966657, guid: e55a4bd3b6d4d4a44996cd7dc8539953, type: 3}
+  - {fileID: 2262541084605966657, guid: ab9adcbaf958d3a4abc268f2cbbb1346, type: 3}
   _trf: {fileID: 8061849243978851265}
   _playerTrf: {fileID: 0}
   _rb: {fileID: 3386431242451766468}
