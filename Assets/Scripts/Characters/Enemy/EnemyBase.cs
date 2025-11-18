@@ -18,15 +18,15 @@ namespace CDB.Character.Enemy
         private void Awake()
         {
             CurrentHealth = MaxHealth;
-           // room = GetComponentInParent<AddRoom>();
         }
 
-       protected void Start()
+        protected void Start()
         {
-        
-        room = GetComponentInParent<AddRoom>();
-        Debug.Log(room);
+            //TO DO: Zenject
+            room = GetComponentInParent<AddRoom>();
         }
+
+
         public float MaxHealth
         {
             get => _maxHealth;
@@ -77,12 +77,12 @@ namespace CDB.Character.Enemy
 
         public virtual void Death()
         {
+            Instantiate(_modules[UnityEngine.Random.Range(0, _modules.Length-1)], transform.position, transform.rotation);
             Destroy(gameObject);
         }
 
         private void OnDestroy()
         {
-            Instantiate(_modules[UnityEngine.Random.Range(0, _modules.Length-1)], transform.position, transform.rotation);
             room.enemies.Remove(gameObject);
         }
     }

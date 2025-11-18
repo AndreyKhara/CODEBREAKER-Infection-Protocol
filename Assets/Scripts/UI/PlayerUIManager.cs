@@ -8,7 +8,6 @@ namespace CDB.UI
     /// </summary>
     public class PlayerUIManager : MonoBehaviour
     {
-        [Header("References")]
         [SerializeField] private Player _player;
         [SerializeField] private PlayerHealthBar _healthBar;
 
