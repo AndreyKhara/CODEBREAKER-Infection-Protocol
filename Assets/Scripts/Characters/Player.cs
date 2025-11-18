@@ -1,4 +1,5 @@
 using UnityEngine;
+using System;
 
 namespace CDB.Character
 {
@@ -7,10 +8,15 @@ namespace CDB.Character
         [SerializeField] private float _maxHealth = 100f;
         private float _currentHealth;
 
+        // Событие для уведомления UI об изменении здоровья
+        public event Action<float, float> OnHealthChanged;
+
         private void Awake()
         {
 
             CurrentHealth = MaxHealth;
+            // Инициализация UI
+            OnHealthChanged?.Invoke(CurrentHealth, MaxHealth);
         }
 
         //health
@@ -27,7 +33,12 @@ namespace CDB.Character
         public float CurrentHealth
         {
             get => _currentHealth;
-            set => _currentHealth = Mathf.Clamp(value, 0f, MaxHealth);
+            set
+            {
+                _currentHealth = Mathf.Clamp(value, 0f, MaxHealth);
+                // Уведомление UI об изменении здоровья
+                OnHealthChanged?.Invoke(_currentHealth, MaxHealth);
+            }
         }
 
         public void TakeDamage(float damageAmount)

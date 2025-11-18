@@ -211,6 +211,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ForvardCorridor
       objectReference: {fileID: 0}
+    - target: {fileID: 8350587232807253562, guid: ff6a6cae9eef5ce4986f20df9c2ad246, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 1901b0f0a60ecde4a83bfaf79ffe6d3e, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1025,6 +1029,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6457847496599496906, guid: 7b11207b2895bba4882fbad025879c97, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 1901b0f0a60ecde4a83bfaf79ffe6d3e, type: 2}
     - target: {fileID: 8618784593366312796, guid: 7b11207b2895bba4882fbad025879c97, type: 3}
       propertyPath: m_LocalRotation.w
       value: -0.7071068
@@ -1127,6 +1135,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RightCorridor
       objectReference: {fileID: 0}
+    - target: {fileID: 8153320373743794427, guid: 35333d47bca6adc4ebc6995e9d2e8d31, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 1901b0f0a60ecde4a83bfaf79ffe6d3e, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1223,6 +1235,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1385183847239040622}
     m_Modifications:
+    - target: {fileID: 1424681375377462150, guid: 1ff8df40f56c3b54b8419799f03b8ddf, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 1901b0f0a60ecde4a83bfaf79ffe6d3e, type: 2}
     - target: {fileID: 2292467661106264721, guid: 1ff8df40f56c3b54b8419799f03b8ddf, type: 3}
       propertyPath: m_Name
       value: floor
@@ -1469,6 +1485,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6917236010927150905, guid: 8b27e6d7a3bbfbe4b84e6e6cc68237e4, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 1901b0f0a60ecde4a83bfaf79ffe6d3e, type: 2}
     - target: {fileID: 8213445840243153071, guid: 8b27e6d7a3bbfbe4b84e6e6cc68237e4, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0

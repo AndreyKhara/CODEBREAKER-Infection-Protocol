@@ -31,6 +31,7 @@ namespace CDB.Input
 
         private void Awake()
         {
+            _playerInput.SwitchCurrentActionMap("Player");
             _move = _playerInput.actions["Move"];
             _jump = _playerInput.actions["Jump"];
 
@@ -46,6 +47,7 @@ namespace CDB.Input
         private void OnEnable()
         {
             _move.Enable();
+            _jump.Enable();
         }
 
         private void OnDisable()
@@ -53,7 +55,10 @@ namespace CDB.Input
             _move.performed -= OnMovePerformed;
             _move.canceled -= OnMoveCanceled;
 
+            _jump.performed -= JumpAction;
+
             _move.Disable();
+            _jump.Disable();
         }
 
 

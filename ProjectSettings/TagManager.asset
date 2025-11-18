@@ -11,6 +11,7 @@ TagManager:
   - Module
   - CorridorEnd
   - Corridors
+  - Enemy
   layers:
   - Default
   - TransparentFX

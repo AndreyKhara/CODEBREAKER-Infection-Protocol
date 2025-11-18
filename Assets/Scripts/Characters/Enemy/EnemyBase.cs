@@ -1,4 +1,6 @@
 using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace CDB.Character.Enemy
 {
@@ -7,12 +9,23 @@ namespace CDB.Character.Enemy
         [SerializeField] private float _maxHealth;
         [SerializeField] private float _moveSpeed;
         [SerializeField] private float _damage;
+        
+        // TO DO: Adressables
+        [SerializeField] private GameObject[] _modules;
+        private AddRoom room;
         private float _currentHealth;
 
         private void Awake()
         {
             CurrentHealth = MaxHealth;
         }
+
+        protected void Start()
+        {
+            //TO DO: Zenject
+            room = GetComponentInParent<AddRoom>();
+        }
+
 
         public float MaxHealth
         {
@@ -64,8 +77,13 @@ namespace CDB.Character.Enemy
 
         public virtual void Death()
         {
+            Instantiate(_modules[UnityEngine.Random.Range(0, _modules.Length-1)], transform.position, transform.rotation);
             Destroy(gameObject);
         }
 
+        private void OnDestroy()
+        {
+            room.enemies.Remove(gameObject);
+        }
     }
 }
