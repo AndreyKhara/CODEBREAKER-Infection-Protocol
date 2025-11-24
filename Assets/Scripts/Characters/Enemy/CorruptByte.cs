@@ -19,6 +19,7 @@ namespace CDB.Character.Enemy
         // TO DO : FindObjectWithType
         private void Start()
         {
+            base.Start();
             _playerTrf = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         }
 
