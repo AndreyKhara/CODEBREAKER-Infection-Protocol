@@ -12,11 +12,12 @@ namespace CDB.Tutorial
     {
         [Header("UI References")]
         [SerializeField] private GameObject _tutorialPanel;
-
+        private PlayerInput _playerInput;
         private InputAction _closeAction;
 
         private void Awake()
         {
+            _playerInput = FindFirstObjectByType<PlayerInput>();
             ShowTutorial();
             // Инициализация Input Action для закрытия
             _closeAction = new InputAction("CloseUI", binding: "<Keyboard>/enter");
@@ -35,7 +36,9 @@ namespace CDB.Tutorial
             if (_tutorialPanel != null)
             {
                 _tutorialPanel.SetActive(true);
-                Time.timeScale = 0f; // Пауза игры во время туториала
+                Time.timeScale = 0f; 
+                if (_playerInput != null)
+                    _playerInput.actions.Disable();
             }
         }
 
@@ -47,7 +50,9 @@ namespace CDB.Tutorial
             if (_tutorialPanel != null)
             {
                 _tutorialPanel.SetActive(false);
-                Time.timeScale = 1f; // Возобновление игры
+                Time.timeScale = 1f; 
+                if (_playerInput != null)
+                    _playerInput.actions.Enable();
             }
         }
 
