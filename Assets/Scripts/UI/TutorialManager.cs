@@ -2,6 +2,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using TMPro;
+using Zenject;
+
 
 namespace CDB.Tutorial
 {
@@ -12,7 +14,8 @@ namespace CDB.Tutorial
     {
         [Header("UI References")]
         [SerializeField] private GameObject _tutorialPanel;
-
+        [Inject]
+        private PlayerInput _playerInput;
         private InputAction _closeAction;
 
         private void Awake()
@@ -35,7 +38,9 @@ namespace CDB.Tutorial
             if (_tutorialPanel != null)
             {
                 _tutorialPanel.SetActive(true);
-                Time.timeScale = 0f; // Пауза игры во время туториала
+                Time.timeScale = 0f; 
+                if (_playerInput != null)
+                    _playerInput.actions.Disable();
             }
         }
 
@@ -47,7 +52,9 @@ namespace CDB.Tutorial
             if (_tutorialPanel != null)
             {
                 _tutorialPanel.SetActive(false);
-                Time.timeScale = 1f; // Возобновление игры
+                Time.timeScale = 1f; 
+                if (_playerInput != null)
+                    _playerInput.actions.Enable();
             }
         }
 
