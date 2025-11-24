@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using TMPro;
+using Zenject;
 
 namespace CDB.Tutorial
 {
@@ -12,12 +13,12 @@ namespace CDB.Tutorial
     {
         [Header("UI References")]
         [SerializeField] private GameObject _tutorialPanel;
+        [Inject]
         private PlayerInput _playerInput;
         private InputAction _closeAction;
 
         private void Awake()
         {
-            _playerInput = FindFirstObjectByType<PlayerInput>();
             ShowTutorial();
             // Инициализация Input Action для закрытия
             _closeAction = new InputAction("CloseUI", binding: "<Keyboard>/enter");
