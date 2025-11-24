@@ -1824,6 +1824,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CDB.Tutorial.TutorialManager
   _tutorialPanel: {fileID: 1508009376}
+  _UIPlayer: {fileID: 2026796310}
 --- !u!1001 &1623119890
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2500,6 +2501,11 @@ MonoBehaviour:
   _parentNewObjectsUnderSceneContext: 0
   _contractNames: []
   _parentContractNames: []
+--- !u!1 &2026796310 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8012778811455277454, guid: 7962e3900689e24438b2a419044ef0a7, type: 3}
+  m_PrefabInstance: {fileID: 5120631984495900932}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2109802255
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2908,7 +2914,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8012778811455277454, guid: 7962e3900689e24438b2a419044ef0a7, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8395284079204744303, guid: 7962e3900689e24438b2a419044ef0a7, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -2917,6 +2923,10 @@ PrefabInstance:
     - target: {fileID: 8395284079204744303, guid: 7962e3900689e24438b2a419044ef0a7, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 9147890474654768552, guid: 7962e3900689e24438b2a419044ef0a7, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 300
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -12,6 +12,7 @@ namespace CDB.Tutorial
     {
         [Header("UI References")]
         [SerializeField] private GameObject _tutorialPanel;
+        [SerializeField] private GameObject _UIPlayer;
 
         private InputAction _closeAction;
 
@@ -35,6 +36,7 @@ namespace CDB.Tutorial
             if (_tutorialPanel != null)
             {
                 _tutorialPanel.SetActive(true);
+                _UIPlayer.SetActive(false);
                 Time.timeScale = 0f; // Пауза игры во время туториала
             }
         }
@@ -46,6 +48,7 @@ namespace CDB.Tutorial
         {
             if (_tutorialPanel != null)
             {
+                _UIPlayer.SetActive(true);
                 _tutorialPanel.SetActive(false);
                 Time.timeScale = 1f; // Возобновление игры
             }
