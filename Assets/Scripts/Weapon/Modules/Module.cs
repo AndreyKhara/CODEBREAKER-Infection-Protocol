@@ -3,28 +3,27 @@ using UnityEngine;
 public abstract class Module : MonoBehaviour
 {
     public GameObject gameObjectOnGun;
-    
-    /*[SerializeField] protected ModuleRarity _rarity = ModuleRarity.Common;
-    
-    public ModuleRarity Rarity => _rarity;
-    
-    /// <summary>
-    /// Множитель бонусов в зависимости от редкости
-    /// </summary>
-    public float RarityMultiplier
+    [SerializeField] public RarityIndicator _moduleRarity;
+    [SerializeField] private ParticleSystem _ps;
+    private Color color;
+    public enum RarityIndicator
     {
-        get
+        Common = 1,
+        Rare = 2, 
+        Epic = 3,
+        Legendary = 4
+    }
+
+    protected void Start()
+    {
+        switch (_moduleRarity)
         {
-            return _rarity switch
-            {
-                ModuleRarity.Common => 1.0f,
-                ModuleRarity.Uncommon => 1.15f,
-                ModuleRarity.Rare => 1.3f,
-                ModuleRarity.Epic => 1.5f,
-                ModuleRarity.Legendary => 1.75f,
-                ModuleRarity.Exotic => 2.0f,
-                _ => 1.0f
-            };
+            case RarityIndicator.Common: color = Color.white; break;
+            case RarityIndicator.Rare: color = Color.blue; break;
+            case RarityIndicator.Epic: color = Color.magenta; break;
+            case RarityIndicator.Legendary: color = new Color(1f, 0.5f, 0f, 1f); break;
         }
-    }*/
+        var main = _ps.main;
+        main.startColor = new ParticleSystem.MinMaxGradient(color);
+    }
 }
