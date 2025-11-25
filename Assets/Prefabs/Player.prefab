@@ -443,8 +443,8 @@ MonoBehaviour:
   _rgb: {fileID: 5686013771783217044}
   _cameraTransform: {fileID: 5697148175155871598}
   _groundChecker: {fileID: 9054145256704448680}
-  _moveCameraAnimationAmount: 0.4
-  _durationAnimation: 0.5
+  _moveCameraAnimationAmount: 0.04
+  _durationAnimation: 0.2
 --- !u!114 &8781706306403661486
 MonoBehaviour:
   m_ObjectHideFlags: 0
