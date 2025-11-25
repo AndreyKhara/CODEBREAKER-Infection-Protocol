@@ -14,6 +14,7 @@ namespace CDB.Tutorial
     {
         [Header("UI References")]
         [SerializeField] private GameObject _tutorialPanel;
+        [SerializeField] private GameObject _UIPlayer;
         [Inject]
         private PlayerInput _playerInput;
         private InputAction _closeAction;
@@ -36,8 +37,10 @@ namespace CDB.Tutorial
         public void ShowTutorial()
         {
             if (_tutorialPanel != null)
-            {
+            {   
+
                 _tutorialPanel.SetActive(true);
+                _UIPlayer.SetActive(false);
                 Time.timeScale = 0f; 
                 if (_playerInput != null)
                     _playerInput.actions.Disable();
@@ -52,6 +55,7 @@ namespace CDB.Tutorial
             if (_tutorialPanel != null)
             {
                 _tutorialPanel.SetActive(false);
+                _UIPlayer.SetActive(true);
                 Time.timeScale = 1f; 
                 if (_playerInput != null)
                     _playerInput.actions.Enable();
