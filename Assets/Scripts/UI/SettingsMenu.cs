@@ -6,16 +6,16 @@ using TMPro;
 
 public class SettingsMenu : MonoBehaviour
 {
-    public AudioMixer audioMixer;
-    public GameObject settingsPanel;
-    public Slider volumeSlider;
+    //TO DO Zenject
+    [SerializeField] private AudioMixer audioMixer;
+    [SerializeField] private GameObject settingsPanel;
+    [SerializeField] private Slider volumeSlider;
+    [SerializeField] private TMP_Dropdown resolutionDropdown;
+    [SerializeField] private Toggle fullscreenToggle;
 
-    public TMP_Dropdown resolutionDropdown;
-    public Toggle fullscreenToggle;
+    private Resolution[] resolutions;
 
-    Resolution[] resolutions;
-
-    void Start()
+    private void Awake()
     {
         // === ВОССТАНОВЛЕНИЕ НАСТРОЕК ===
         
@@ -67,15 +67,5 @@ public class SettingsMenu : MonoBehaviour
     {
         Screen.fullScreen = isFullscreen;
         PlayerPrefs.SetInt("Fullscreen", isFullscreen ? 1 : 0);
-    }
-
-     public void OpenSettings()
-    {
-        settingsPanel.SetActive(true);
-    }
-
-    public void CloseSettings()
-    {
-        settingsPanel.SetActive(false);
     }
 }
