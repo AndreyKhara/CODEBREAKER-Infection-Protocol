@@ -8,6 +8,7 @@ public abstract class Module : MonoBehaviour
     private Color color;
     public enum RarityIndicator
     {
+        None = 0,
         Common = 1,
         Rare = 2, 
         Epic = 3,

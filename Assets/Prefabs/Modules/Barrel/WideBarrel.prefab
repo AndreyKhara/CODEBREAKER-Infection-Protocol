@@ -126,7 +126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WideBarrel
   gameObjectOnGun: {fileID: 1243270595594469135}
-  _moduleRarity: 0
+  _moduleRarity: 1
   _ps: {fileID: 459353597511612891}
   _spread: 7
   _projectileCount: 1
