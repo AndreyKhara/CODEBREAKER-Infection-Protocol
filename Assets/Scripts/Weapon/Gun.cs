@@ -14,12 +14,12 @@ public class Gun : MonoBehaviour, IWeapon
     public bool _stopShoot = false;
 
     public float _instability = 0f;
-
+    [SerializeField] private GameObject _weaponUI;
     [SerializeField] private float _addInstabilityAmount = 5f;
 
-    [SerializeField] private Transform _transformBarrel;
-    [SerializeField] private Transform _transformAmmo;
-    [SerializeField] private Transform _transformCatalyst;
+    //[SerializeField] private Transform _transformBarrel;
+    //[SerializeField] private Transform _transformAmmo;
+    //[SerializeField] private Transform _transformCatalyst;
 
     [SerializeField] private Module _barrelStock;
     [SerializeField] private Module _ammoStock;
@@ -42,7 +42,7 @@ public class Gun : MonoBehaviour, IWeapon
     private float _spreadAngle = 0.1f;
 
     protected GameObject _bulletPrefab;
-
+    
     private void Start()
     {
         ChangeModule(_barrelStock);
@@ -52,13 +52,18 @@ public class Gun : MonoBehaviour, IWeapon
         _glitchManager = new GlitchManager(this);
     }
 
+    private void OnEnable()
+    {
+        _weaponUI.SetActive(true);
+    }
+
     public void ChangeModule(Module newModule)
     {
         if (newModule is IBarrel barrel)
         {
-            Destroy(_gbjBarrel);
-            _gbjBarrel = Instantiate(newModule.gameObjectOnGun, _transformBarrel.position, _transformBarrel.rotation);
-            _gbjBarrel.transform.SetParent(_transformBarrel);
+            //Destroy(_gbjBarrel);
+            //_gbjBarrel = Instantiate(newModule.gameObjectOnGun, _transformBarrel.position, _transformBarrel.rotation);
+            //_gbjBarrel.transform.SetParent(_transformBarrel);
             _spreadAngle = barrel.Spread;
             _barrelModule = barrel;
 
@@ -67,9 +72,9 @@ public class Gun : MonoBehaviour, IWeapon
 
         if (newModule is IAmmo ammo)
         {
-            Destroy(_gbjAmmo);
-            _gbjAmmo = Instantiate(newModule.gameObjectOnGun, _transformAmmo.position, _transformAmmo.rotation);
-            _gbjAmmo.transform.SetParent(_transformAmmo);
+            //Destroy(_gbjAmmo);
+            //_gbjAmmo = Instantiate(newModule.gameObjectOnGun, _transformAmmo.position, _transformAmmo.rotation);
+            //_gbjAmmo.transform.SetParent(_transformAmmo);
             _ammoModule = ammo;
 
             UpdateBullet();
@@ -79,9 +84,9 @@ public class Gun : MonoBehaviour, IWeapon
 
         if (newModule is ICatalyst catalyst)
         {
-            Destroy(_gbjCatalyst);
-            _gbjCatalyst = Instantiate(newModule.gameObjectOnGun, _transformCatalyst.position, _transformCatalyst.rotation);
-            _gbjCatalyst.transform.SetParent(_transformCatalyst);
+            //Destroy(_gbjCatalyst);
+            //_gbjCatalyst = Instantiate(newModule.gameObjectOnGun, _transformCatalyst.position, _transformCatalyst.rotation);
+            // _gbjCatalyst.transform.SetParent(_transformCatalyst);
             _catalystModule = catalyst;
 
             _bulletPrefab = _catalystModule.BulletPrefab;
@@ -120,6 +125,11 @@ public class Gun : MonoBehaviour, IWeapon
            _glitchManager.GlitchEffect();
            _instability = 30;
         }
+    }
+
+    private void OnDisable()
+    {
+        _weaponUI.SetActive(false);
     }
     
     public virtual void Shoot() { 

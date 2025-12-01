@@ -3136,7 +3136,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8395284079204744303, guid: 7962e3900689e24438b2a419044ef0a7, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 14
+      value: 13.9999695
       objectReference: {fileID: 0}
     - target: {fileID: 8395284079204744303, guid: 7962e3900689e24438b2a419044ef0a7, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -3318,6 +3318,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1333741023836938463, guid: 846bd31b2a937424dbbaef79fca621d2, type: 3}
+      propertyPath: _weaponUI
+      value: 
+      objectReference: {fileID: 416103192}
+    - target: {fileID: 1333741023836938463, guid: 846bd31b2a937424dbbaef79fca621d2, type: 3}
       propertyPath: _weaoponTexture
       value: 
       objectReference: {fileID: 416103192}
@@ -3429,6 +3433,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8133173283042446335, guid: 846bd31b2a937424dbbaef79fca621d2, type: 3}
+      propertyPath: _weaponUI
+      value: 
+      objectReference: {fileID: 492359370}
     - target: {fileID: 8133173283042446335, guid: 846bd31b2a937424dbbaef79fca621d2, type: 3}
       propertyPath: _ammoStock
       value: 
