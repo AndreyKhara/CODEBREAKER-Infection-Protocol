@@ -27,7 +27,7 @@ public class Gun : MonoBehaviour, IWeapon
 
     [SerializeField] protected Transform _projectileSpawner;
 
-    [SerializeField] protected GlitchManager _glitchManager;
+    private GlitchManager _glitchManager;
 
     // Glitch system properties
     [Header("Glitch System")]

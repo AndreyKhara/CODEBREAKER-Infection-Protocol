@@ -222,8 +222,8 @@ public class RoomsSpawner : MonoBehaviour
         
         GameObject wall = Instantiate(staticWallPrefab, wallPosition, wallRotation);
         
-        // Настраиваем стену для рикошета пуль
-        WallSetup.SetupWallStatic(wall, addCollider: true);
+        // TODO: Настраиваем стену для рикошета пуль
+        // WallSetup.SetupWallStatic(wall, addCollider: true);
         
         // ИСПРАВЛЕНИЕ: Создаем контейнер WallEnd на корневом уровне сцены
         GameObject wallEndContainer = GameObject.Find("WallEnd");

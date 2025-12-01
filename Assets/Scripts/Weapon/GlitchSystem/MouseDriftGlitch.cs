@@ -15,11 +15,8 @@ public class MouseDriftGlitch : GlitchEffect
 
     public override void Apply(Gun gun)
     {
-        var cameraEffect = GlitchCameraEffect.Instance;
-        if (cameraEffect == null)
-        {
-            cameraEffect = UnityEngine.Object.FindFirstObjectByType<GlitchCameraEffect>();
-        }
+        var cameraEffect = GlitchCameraEffect.Instance 
+            ?? UnityEngine.Object.FindFirstObjectByType<GlitchCameraEffect>();
 
         if (cameraEffect == null)
         {
