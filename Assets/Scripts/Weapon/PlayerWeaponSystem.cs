@@ -18,6 +18,7 @@ namespace CDB.Input
 
         [Inject]
         private PlayerInput _playerInput;
+        
 
         private void Awake()
         {

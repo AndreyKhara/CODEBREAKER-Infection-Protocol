@@ -83,7 +83,7 @@ namespace CDB.Character.Enemy
 
         private void OnDestroy()
         {
-            room.enemies.Remove(gameObject);
+            room?.enemies?.Remove(gameObject);
         }
     }
 }
