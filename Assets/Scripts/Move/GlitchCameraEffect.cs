@@ -1,10 +1,12 @@
 using UnityEngine;
+using System;
 
 namespace CDB.Input
 {
     /// <summary>
     /// Компонент для применения глитч-эффектов к камере игрока.
     /// Работает совместно с PlayerCameraController - предоставляет offset который тот применяет.
+    /// При окончании эффекта offset "вливается" в реальное положение камеры.
     /// </summary>
     public class GlitchCameraEffect : MonoBehaviour
     {
@@ -23,6 +25,23 @@ namespace CDB.Input
 
         // Накопленное смещение от drift
         private Vector2 _accumulatedDrift = Vector2.zero;
+        
+        // Текущий применяемый offset
+        private Vector2 _currentOffset = Vector2.zero;
+        
+        // Отслеживание состояния эффектов для snap
+        private bool _wasEffectActive = false;
+
+        /// <summary>
+        /// Событие вызывается когда эффект заканчивается.
+        /// Передаёт offset который нужно применить к камере.
+        /// </summary>
+        public event Action<Vector2> OnEffectEnded;
+
+        /// <summary>
+        /// Активен ли какой-либо эффект
+        /// </summary>
+        public bool IsAnyEffectActive => _driftDirection != Vector2.zero || _jitterIntensity > 0f;
 
         /// <summary>
         /// Направление и скорость дрейфа камеры для MouseDriftGlitch.
@@ -58,7 +77,23 @@ namespace CDB.Input
 
         private void Update()
         {
-            // Обновляем накопленный drift
+            bool isActive = IsAnyEffectActive;
+            
+            // Проверяем переход из активного состояния в неактивное
+            if (_wasEffectActive && !isActive)
+            {
+                // Эффект только что закончился - делаем snap
+                // Сообщаем PlayerCameraController что нужно применить offset к _cameraRotation
+                OnEffectEnded?.Invoke(_currentOffset);
+                
+                // Обнуляем offset после snap
+                _currentOffset = Vector2.zero;
+                _accumulatedDrift = Vector2.zero;
+            }
+            
+            _wasEffectActive = isActive;
+
+            // Вычисляем целевой offset от активных эффектов
             if (_driftDirection != Vector2.zero)
             {
                 _accumulatedDrift += _driftDirection * _driftSpeed * Time.deltaTime;
@@ -66,11 +101,18 @@ namespace CDB.Input
                 // Ограничиваем максимальный дрейф
                 _accumulatedDrift.x = Mathf.Clamp(_accumulatedDrift.x, -_maxDriftAngle, _maxDriftAngle);
                 _accumulatedDrift.y = Mathf.Clamp(_accumulatedDrift.y, -_maxDriftAngle, _maxDriftAngle);
+                
+                _currentOffset = _accumulatedDrift;
             }
-            else
+
+            // Добавляем jitter (временный, не накапливается)
+            if (_jitterIntensity > 0f)
             {
-                // Плавно сбрасываем накопленный drift когда эффект выключен
-                _accumulatedDrift = Vector2.Lerp(_accumulatedDrift, Vector2.zero, Time.deltaTime * 5f);
+                float jitterX = (Mathf.PerlinNoise(Time.time * _jitterFrequency, 0f) - 0.5f) * 2f * _jitterIntensity;
+                float jitterY = (Mathf.PerlinNoise(0f, Time.time * _jitterFrequency) - 0.5f) * 2f * _jitterIntensity;
+                
+                // Jitter добавляется поверх drift, но не накапливается для snap
+                // (jitter не должен влиять на финальную позицию после snap)
             }
         }
 
@@ -80,9 +122,9 @@ namespace CDB.Input
         /// </summary>
         public Vector2 GetCurrentOffset()
         {
-            Vector2 offset = _accumulatedDrift;
-
-            // Добавляем jitter
+            Vector2 offset = _currentOffset;
+            
+            // Добавляем jitter поверх (он временный и не участвует в snap)
             if (_jitterIntensity > 0f)
             {
                 float jitterX = (Mathf.PerlinNoise(Time.time * _jitterFrequency, 0f) - 0.5f) * 2f * _jitterIntensity;
@@ -90,7 +132,7 @@ namespace CDB.Input
                 offset.x += jitterX;
                 offset.y += jitterY;
             }
-
+            
             return offset;
         }
 
@@ -110,6 +152,8 @@ namespace CDB.Input
             _driftDirection = Vector2.zero;
             _jitterIntensity = 0f;
             _accumulatedDrift = Vector2.zero;
+            _currentOffset = Vector2.zero;
+            _wasEffectActive = false;
         }
     }
 }

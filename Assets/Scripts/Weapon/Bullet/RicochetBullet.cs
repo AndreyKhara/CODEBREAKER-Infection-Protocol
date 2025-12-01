@@ -42,6 +42,11 @@ public class RicochetBullet : MonoBehaviour, IProjectile
     private void Awake()
     {
         _spawnTime = Time.time;
+    }
+
+    private void Start()
+    {
+        // Применяем скорость в Start, чтобы глитч-множители успели изменить Speed
         _rb.linearVelocity = transform.forward * Speed;
     }
 

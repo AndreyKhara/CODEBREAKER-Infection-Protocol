@@ -46,6 +46,27 @@ namespace CDB.Input
                     _glitchEffect = GlitchCameraEffect.Instance;
                 }
             }
+            
+            // Подписываемся на событие окончания глитч-эффекта
+            if (_glitchEffect != null)
+            {
+                _glitchEffect.OnEffectEnded += OnGlitchEffectEnded;
+            }
+        }
+
+        /// <summary>
+        /// Вызывается когда глитч-эффект заканчивается.
+        /// Применяет накопленный offset к реальному положению камеры (snap).
+        /// </summary>
+        private void OnGlitchEffectEnded(Vector2 offset)
+        {
+            // "Вливаем" offset в реальное положение камеры
+            // Теперь камера остаётся там, где игрок визуально смотрел
+            _cameraRotation.x += offset.x;
+            _cameraRotation.y -= offset.y; // Минус потому что pitch инвертирован
+            
+            // Ограничиваем pitch
+            _cameraRotation.y = Mathf.Clamp(_cameraRotation.y, minPitch, maxPitch);
         }
 
         private void OnEnable()
@@ -118,6 +139,12 @@ namespace CDB.Input
             _cameraControl.performed -= OnCameraControlPerformed;
 
             _cameraControl.Disable();
+            
+            // Отписываемся от события глитч-эффекта
+            if (_glitchEffect != null)
+            {
+                _glitchEffect.OnEffectEnded -= OnGlitchEffectEnded;
+            }
         }
 
     }
