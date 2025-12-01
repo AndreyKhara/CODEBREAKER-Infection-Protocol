@@ -10,6 +10,9 @@ namespace CDB.Character.Enemy
         [SerializeField] private float _moveSpeed;
         [SerializeField] private float _damage;
         
+        [SerializeField] protected Renderer _targetRenderer;
+        [SerializeField] private Color _damageColor = Color.red;
+        [SerializeField] private Color _normalColor = Color.white;
         // TO DO: Adressables
         [SerializeField] private GameObject[] _modules;
         private AddRoom room;
@@ -56,6 +59,7 @@ namespace CDB.Character.Enemy
 
         public virtual void TakeDamage(float damageAmount)
         {
+            ShowDamage();
             CurrentHealth -= damageAmount;
             if (CurrentHealth <= 0)
             {
@@ -79,6 +83,24 @@ namespace CDB.Character.Enemy
         {
             Instantiate(_modules[UnityEngine.Random.Range(0, _modules.Length-1)], transform.position, transform.rotation);
             Destroy(gameObject);
+        }
+
+        protected void ShowDamage()
+        {
+            UpdateColor(_damageColor);
+            CancelInvoke(nameof(ResetColor));
+            Invoke(nameof(ResetColor), 0.2f);
+        }
+
+        protected void ResetColor()
+        {
+            UpdateColor(_normalColor);
+        }
+
+        protected void UpdateColor(Color color)
+        {
+            _targetRenderer.material.color = color;
+
         }
 
         private void OnDestroy()

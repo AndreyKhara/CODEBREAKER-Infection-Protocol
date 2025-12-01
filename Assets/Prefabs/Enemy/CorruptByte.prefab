@@ -209,6 +209,9 @@ MonoBehaviour:
   _maxHealth: 150
   _moveSpeed: 1
   _damage: 10
+  _targetRenderer: {fileID: 3571815313004874882}
+  _damageColor: {r: 1, g: 0, b: 0, a: 1}
+  _normalColor: {r: 1, g: 1, b: 1, a: 1}
   _modules:
   - {fileID: 8986022734107799168, guid: c7dbcce0cd25dbe4b9b7b2bfd293b5b7, type: 3}
   - {fileID: 1243270595594469135, guid: 28273de2f17373943986a047b13f0804, type: 3}
