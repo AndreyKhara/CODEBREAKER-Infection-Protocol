@@ -17,10 +17,18 @@ public class Blaster : Gun
                 Quaternion spreadRotation = Quaternion.Euler(randomPitch, randomYaw, 0f);
                 Quaternion finalRotation = _projectileSpawner.rotation * spreadRotation;
 
-                // Создаем пулю
-                Instantiate(_bulletPrefab, _projectileSpawner.position, finalRotation);
+                // Создаем пулю (используем ActiveBulletPrefab для поддержки рикошета)
+                GameObject bullet = Instantiate(ActiveBulletPrefab, _projectileSpawner.position, finalRotation);
+                
+                // Применяем глитч-множители
+                IProjectile projectile = bullet.GetComponent<IProjectile>();
+                if (projectile != null)
+                {
+                    projectile.Speed *= BulletSpeedMultiplier;
+                    projectile.Damage *= DamageMultiplier;
+                }
+                
                 AddInstability();
-                //Debug.Log(_bulletPrefab);
             }
             _ammoModule.AmountAmmo -= _barrelModule.ProjectileCount;
         }

@@ -29,6 +29,47 @@ public class Gun : MonoBehaviour, IWeapon
 
     [SerializeField] protected GlitchManager _glitchManager;
 
+    // Glitch system properties
+    [Header("Glitch System")]
+    [SerializeField] private GameObject _ricochetBulletPrefab;
+    
+    /// <summary>
+    /// Флаг для RicochetMalfunctionGlitch - использовать рикошетные пули
+    /// </summary>
+    public bool UseRicochetBullet { get; set; } = false;
+    
+    /// <summary>
+    /// Флаг для TriggerLockGlitch - автоматическая стрельба
+    /// </summary>
+    public bool IsAutoFireLocked { get; set; } = false;
+    
+    /// <summary>
+    /// Множитель скорости пули для SlowMotionBulletsGlitch
+    /// </summary>
+    public float BulletSpeedMultiplier { get; set; } = 1f;
+    
+    /// <summary>
+    /// Множитель урона для глитчей (Overcharge, SlowMotion)
+    /// </summary>
+    public float DamageMultiplier { get; set; } = 1f;
+    
+    /// <summary>
+    /// Публичный доступ к модулю патронов для глитчей
+    /// </summary>
+    public IAmmo AmmoModule => _ammoModule;
+    
+    /// <summary>
+    /// Публичный доступ к рикошетному префабу
+    /// </summary>
+    public GameObject RicochetBulletPrefab => _ricochetBulletPrefab;
+    
+    /// <summary>
+    /// Получить текущий активный префаб пули (обычный или рикошетный)
+    /// </summary>
+    public GameObject ActiveBulletPrefab => UseRicochetBullet && _ricochetBulletPrefab != null 
+        ? _ricochetBulletPrefab 
+        : _bulletPrefab;
+
     protected IBarrel _barrelModule;
     protected IAmmo _ammoModule;
     protected IModifier _modifierModule;
@@ -50,6 +91,15 @@ public class Gun : MonoBehaviour, IWeapon
         ChangeModule(_ammoStock);
 
         _glitchManager = new GlitchManager(this);
+    }
+
+    private void Update()
+    {
+        // TriggerLockGlitch - автоматическая стрельба
+        if (IsAutoFireLocked)
+        {
+            Shoot();
+        }
     }
 
     private void OnEnable()
