@@ -1,8 +1,22 @@
 using System.Transactions;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using Cysharp.Threading.Tasks;
+using System; 
 
 public class Gun : MonoBehaviour, IWeapon
 {
+    public float Spread{
+        get => _spreadAngle;
+        set => _spreadAngle = value;
+    }
+    public bool _stopShoot = false;
+
+    public float _instability = 0f;
+
+    [SerializeField] private float _addInstabilityAmount = 5f;
+
     [SerializeField] private Transform _transformBarrel;
     [SerializeField] private Transform _transformAmmo;
     [SerializeField] private Transform _transformCatalyst;
@@ -12,6 +26,8 @@ public class Gun : MonoBehaviour, IWeapon
     [SerializeField] private Module _catalystStock;
 
     [SerializeField] protected Transform _projectileSpawner;
+
+    [SerializeField] protected GlitchManager _glitchManager;
 
     protected IBarrel _barrelModule;
     protected IAmmo _ammoModule;
@@ -23,6 +39,8 @@ public class Gun : MonoBehaviour, IWeapon
     private GameObject _gbjModifier;
     private GameObject _gbjCatalyst;
 
+    private float _spreadAngle = 0.1f;
+
     protected GameObject _bulletPrefab;
 
     private void Start()
@@ -30,17 +48,18 @@ public class Gun : MonoBehaviour, IWeapon
         ChangeModule(_barrelStock);
         ChangeModule(_catalystStock);
         ChangeModule(_ammoStock);
-        
+
+        _glitchManager = new GlitchManager(this);
     }
 
     public void ChangeModule(Module newModule)
     {
-        Debug.Log("Change Module");
         if (newModule is IBarrel barrel)
         {
             Destroy(_gbjBarrel);
             _gbjBarrel = Instantiate(newModule.gameObjectOnGun, _transformBarrel.position, _transformBarrel.rotation);
             _gbjBarrel.transform.SetParent(_transformBarrel);
+            _spreadAngle = barrel.Spread;
             _barrelModule = barrel;
 
             return;
@@ -57,7 +76,6 @@ public class Gun : MonoBehaviour, IWeapon
 
             return;
         }
-
 
         if (newModule is ICatalyst catalyst)
         {
@@ -93,8 +111,20 @@ public class Gun : MonoBehaviour, IWeapon
             Debug.Log("No prefab bullet");
         }
     }
+
+    protected void AddInstability()
+    {
+        _instability += _addInstabilityAmount;
+        if (_instability >= 100)
+        {
+           _glitchManager.GlitchEffect();
+           _instability = 30;
+        }
+    }
     
-    public virtual void Shoot() { }
+    public virtual void Shoot() { 
+        
+    }
     public virtual void Recharge() { }
     
 }

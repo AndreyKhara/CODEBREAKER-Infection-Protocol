@@ -3090,9 +3090,21 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1333741023836938463, guid: 846bd31b2a937424dbbaef79fca621d2, type: 3}
+      propertyPath: gitchLibrary
+      value: 
+      objectReference: {fileID: 11400000, guid: eaea746b7b2dcae4a9b804100d3d087d, type: 2}
+    - target: {fileID: 1333741023836938463, guid: 846bd31b2a937424dbbaef79fca621d2, type: 3}
+      propertyPath: _glitchManager
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1333741023836938463, guid: 846bd31b2a937424dbbaef79fca621d2, type: 3}
       propertyPath: _projectileSpawner
       value: 
       objectReference: {fileID: 4760138}
+    - target: {fileID: 1333741023836938463, guid: 846bd31b2a937424dbbaef79fca621d2, type: 3}
+      propertyPath: _addInstabilityAmount
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 2541376256482295992, guid: 846bd31b2a937424dbbaef79fca621d2, type: 3}
       propertyPath: m_LocalPosition.x
       value: -18.59
