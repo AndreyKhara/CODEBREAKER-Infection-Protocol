@@ -135,6 +135,9 @@ MonoBehaviour:
   _timeLife: 5
   _damage: 10
   _rb: {fileID: 5235312229038874660}
+  _wallLayers:
+    serializedVersion: 2
+    m_Bits: 64
   _aoeRadius: 5
   _impactEffectPrefab: {fileID: 4548883987729005328, guid: 62b48a02ccea14b6496fc37a70d45714, type: 3}
   _damageLayerMask:

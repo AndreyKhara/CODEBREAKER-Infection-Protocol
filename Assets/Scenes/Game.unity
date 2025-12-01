@@ -184,7 +184,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 1901b0f0a60ecde4a83bfaf79ffe6d3e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -426,7 +426,7 @@ Light:
   serializedVersion: 11
   m_Type: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1
+  m_Intensity: 0.3
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -507,9 +507,9 @@ GameObject:
   - component: {fileID: 259886809}
   - component: {fileID: 259886808}
   - component: {fileID: 259886807}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: Wall (1)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -838,11 +838,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f09d1cb4013604ab5abfd390f8e82497, type: 3}
---- !u!1 &667417648 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6203792684997276855, guid: 846bd31b2a937424dbbaef79fca621d2, type: 3}
-  m_PrefabInstance: {fileID: 8589677301635681851}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &771101704 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8061849243978851265, guid: d8c8b079b6653bd43b60de1acdcf298f, type: 3}
@@ -1984,27 +1979,12 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2933769783795748910, guid: 846bd31b2a937424dbbaef79fca621d2, type: 3}
   m_PrefabInstance: {fileID: 8589677301635681851}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 667417648}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: eb3d20740cf72d64b91ec6028db60acf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1507970131
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 667417648}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8805b1eb772a4461389be1f311ccb748, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CDB.Input.GlitchCameraEffect
-  _driftSpeed: 2
-  _maxDriftAngle: 15
-  _jitterFrequency: 15
 --- !u!1 &1508009376 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7437463636401584128, guid: a8f3c9e7b5d4a2c4e9f1b3a5c7d8e0f2, type: 3}
@@ -2120,9 +2100,9 @@ GameObject:
   - component: {fileID: 1690617762}
   - component: {fileID: 1690617761}
   - component: {fileID: 1690617760}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: Wall (2)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2231,9 +2211,9 @@ GameObject:
   - component: {fileID: 1700068983}
   - component: {fileID: 1700068982}
   - component: {fileID: 1700068981}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: Wall
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2342,9 +2322,9 @@ GameObject:
   - component: {fileID: 1713211373}
   - component: {fileID: 1713211372}
   - component: {fileID: 1713211371}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: Wall (3)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3349,10 +3329,6 @@ PrefabInstance:
       propertyPath: _weaoponTexture
       value: 
       objectReference: {fileID: 416103192}
-    - target: {fileID: 1333741023836938463, guid: 846bd31b2a937424dbbaef79fca621d2, type: 3}
-      propertyPath: _ricochetBulletPrefab
-      value: 
-      objectReference: {fileID: 8635179893654266680, guid: f94d93ecdb06041898d83bd96c011c6f, type: 3}
     - target: {fileID: 2541376256482295992, guid: 846bd31b2a937424dbbaef79fca621d2, type: 3}
       propertyPath: m_LocalPosition.x
       value: -18.59
@@ -3481,20 +3457,13 @@ PrefabInstance:
       propertyPath: _weaoponTexture
       value: 
       objectReference: {fileID: 492359370}
-    - target: {fileID: 8781706306403661486, guid: 846bd31b2a937424dbbaef79fca621d2, type: 3}
-      propertyPath: _glitchEffect
-      value: 
-      objectReference: {fileID: 1507970131}
     m_RemovedComponents:
     - {fileID: 3014909843649904915, guid: 846bd31b2a937424dbbaef79fca621d2, type: 3}
     - {fileID: 7967726943386338908, guid: 846bd31b2a937424dbbaef79fca621d2, type: 3}
     - {fileID: 3368175790577999809, guid: 846bd31b2a937424dbbaef79fca621d2, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 6203792684997276855, guid: 846bd31b2a937424dbbaef79fca621d2, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1507970131}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 846bd31b2a937424dbbaef79fca621d2, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

@@ -3,8 +3,7 @@ using Cysharp.Threading.Tasks;
 using System;
 
 /// <summary>
-/// Глитч рикошета: пули отскакивают от стен в случайном направлении.
-/// Опасно - можно попасть в себя!
+/// Глитч рикошета: пули отскакивают от стен. Опасно - можно попасть в себя!
 /// </summary>
 [Serializable]
 public class RicochetMalfunctionGlitch : GlitchEffect
@@ -15,17 +14,18 @@ public class RicochetMalfunctionGlitch : GlitchEffect
     {
         if (gun.RicochetBulletPrefab == null)
         {
-            Debug.LogWarning("RicochetMalfunctionGlitch: RicochetBulletPrefab не назначен в Gun!");
+            Debug.LogWarning("RicochetMalfunctionGlitch: RicochetBulletPrefab не назначен!");
             return;
         }
 
-        ChangeValue(
-            () => gun.UseRicochetBullet,
-            (val) => gun.UseRicochetBullet = val,
-            true,
-            _duration
-        ).Forget();
-
+        EnableRicochetAsync(gun).Forget();
         gun._instability = 30;
+    }
+
+    private async UniTaskVoid EnableRicochetAsync(Gun gun)
+    {
+        gun.UseRicochetBullet = true;
+        await UniTask.Delay(TimeSpan.FromSeconds(_duration), ignoreTimeScale: false);
+        gun.UseRicochetBullet = false;
     }
 }

@@ -2,24 +2,32 @@ using UnityEngine;
 using CDB.Character;
 
 /// <summary>
-/// Рикошетная пуля для RicochetMalfunctionGlitch.
-/// Отскакивает от поверхностей в случайном направлении вместо уничтожения.
+/// Рикошетная пуля - отскакивает от стен и может нанести урон врагам и игроку.
 /// </summary>
 public class RicochetBullet : MonoBehaviour, IProjectile
 {
+    private const string TAG_ENEMY = "Enemy";
+    private const string TAG_PLAYER = "Player";
+    private const string TAG_WALL = "Wall";
+
+    [Header("Bullet Settings")]
     [SerializeField] private float _speed = 50f;
     [SerializeField] private float _timeLife = 5f;
     [SerializeField] private float _damage = 10f;
     [SerializeField] private Rigidbody _rb;
 
     [Header("Ricochet Settings")]
-    [SerializeField] private int _maxBounces = 3;
-    [SerializeField] private float _randomAngleDeviation = 30f; // Случайное отклонение при отскоке
-    [SerializeField] private float _damageReductionPerBounce = 0.7f; // Множитель урона после каждого отскока
-    [SerializeField] private LayerMask _ricochetLayers; // Слои от которых отскакивает
+    [SerializeField] private int _maxBounces = 5;
+    [SerializeField] private float _randomAngleDeviation = 8f;
+    [SerializeField] private float _damageReductionPerBounce = 0.85f;
+    [SerializeField] private LayerMask _ricochetLayers;
+
+    [Header("Player Damage")]
+    [SerializeField] private bool _canDamagePlayer = true;
+    [SerializeField] private float _playerDamageMultiplier = 0.5f;
 
     private float _spawnTime;
-    private int _currentBounces = 0;
+    private int _currentBounces;
 
     public float Speed
     {
@@ -60,19 +68,41 @@ public class RicochetBullet : MonoBehaviour, IProjectile
 
     private void OnCollisionEnter(Collision collision)
     {
-        // Проверяем попадание по врагу
-        if (collision.gameObject.CompareTag("Enemy"))
-        {
-            IHealth health = collision.gameObject.GetComponent<IHealth>();
-            if (health != null)
-            {
-                health.TakeDamage(_damage);
-            }
-            Destroy(gameObject);
-            return;
-        }
+        var target = collision.gameObject;
 
-        // Попытка рикошета
+        if (TryDealDamage(target, TAG_ENEMY, _damage)) return;
+        if (TryDealDamage(target, TAG_PLAYER, _damage * _playerDamageMultiplier, _canDamagePlayer)) return;
+
+        TryRicochet(collision);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        var target = other.gameObject;
+
+        if (TryDealDamage(target, TAG_ENEMY, _damage)) return;
+        if (TryDealDamage(target, TAG_PLAYER, _damage * _playerDamageMultiplier, _canDamagePlayer)) return;
+
+        if (target.CompareTag(TAG_WALL))
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    private bool TryDealDamage(GameObject target, string tag, float damage, bool condition = true)
+    {
+        if (!condition || !target.CompareTag(tag)) return false;
+
+        if (target.TryGetComponent<IHealth>(out var health))
+        {
+            health.TakeDamage(damage);
+        }
+        Destroy(gameObject);
+        return true;
+    }
+
+    private void TryRicochet(Collision collision)
+    {
         if (_currentBounces < _maxBounces)
         {
             PerformRicochet(collision);
@@ -83,45 +113,30 @@ public class RicochetBullet : MonoBehaviour, IProjectile
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    private bool IsWall(GameObject obj)
     {
-        // Для триггер-коллайдеров врагов
-        if (other.CompareTag("Enemy"))
-        {
-            IHealth health = other.GetComponent<IHealth>();
-            if (health != null)
-            {
-                health.TakeDamage(_damage);
-            }
-            Destroy(gameObject);
-        }
+        return obj.CompareTag(TAG_WALL) || (_ricochetLayers.value & (1 << obj.layer)) != 0;
     }
 
     private void PerformRicochet(Collision collision)
     {
         _currentBounces++;
 
-        // Получаем нормаль поверхности
         Vector3 normal = collision.contacts[0].normal;
-        Vector3 incomingDirection = _rb.linearVelocity.normalized;
+        Vector3 reflected = Vector3.Reflect(_rb.linearVelocity.normalized, normal);
 
-        // Вычисляем направление отражения
-        Vector3 reflectedDirection = Vector3.Reflect(incomingDirection, normal);
+        // Небольшое случайное отклонение
+        reflected = ApplyRandomDeviation(reflected);
 
-        // Добавляем случайное отклонение для "глитчевости"
-        float randomYaw = Random.Range(-_randomAngleDeviation, _randomAngleDeviation);
-        float randomPitch = Random.Range(-_randomAngleDeviation, _randomAngleDeviation);
-        Quaternion randomRotation = Quaternion.Euler(randomPitch, randomYaw, 0f);
-        reflectedDirection = randomRotation * reflectedDirection;
-
-        // Применяем новое направление
-        _rb.linearVelocity = reflectedDirection.normalized * _speed;
-        transform.forward = reflectedDirection.normalized;
-
-        // Уменьшаем урон после отскока
+        _rb.linearVelocity = reflected * _speed;
+        transform.forward = reflected;
         _damage *= _damageReductionPerBounce;
+    }
 
-        // Визуальный эффект (опционально - можно добавить партиклы)
-        // Debug.Log($"Ricochet! Bounces: {_currentBounces}/{_maxBounces}, Damage: {_damage}");
+    private Vector3 ApplyRandomDeviation(Vector3 direction)
+    {
+        float yaw = Random.Range(-_randomAngleDeviation, _randomAngleDeviation);
+        float pitch = Random.Range(-_randomAngleDeviation, _randomAngleDeviation);
+        return (Quaternion.Euler(pitch, yaw, 0f) * direction).normalized;
     }
 }

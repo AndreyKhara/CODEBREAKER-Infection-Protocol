@@ -118,7 +118,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!65 &441730294114017997
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -134,7 +134,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -156,9 +156,11 @@ MonoBehaviour:
   _timeLife: 5
   _damage: 10
   _rb: {fileID: 19525028492408453}
-  _maxBounces: 3
-  _randomAngleDeviation: 30
-  _damageReductionPerBounce: 0.7
+  _maxBounces: 5
+  _randomAngleDeviation: 8
+  _damageReductionPerBounce: 0.85
   _ricochetLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
+  _canDamagePlayer: 1
+  _playerDamageMultiplier: 0.5
