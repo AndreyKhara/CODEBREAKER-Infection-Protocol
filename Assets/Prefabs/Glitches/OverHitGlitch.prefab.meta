@@ -1,6 +1,12 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Art/Textures.meta
+guid: ca1fa7db99fb82741a719faeeec883bd
+folderAsset: yes
+DefaultImporter:
+========
 guid: 4bdf23a624483e347b7cf3a5786bc86c
 PrefabImporter:
+>>>>>>>> develop:Assets/Prefabs/Glitches/OverHitGlitch.prefab.meta
   externalObjects: {}
   userData: 
   assetBundleName: 
