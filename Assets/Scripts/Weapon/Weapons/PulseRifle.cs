@@ -47,7 +47,17 @@ public class PulseRifle : Gun
     {
        for (int j = 0; j < _countBullet; j++)
        {
-            Instantiate(_bulletPrefab, _projectileSpawner.position, rotation);
+            // Создаем пулю (используем ActiveBulletPrefab для поддержки рикошета)
+            GameObject bullet = Instantiate(ActiveBulletPrefab, _projectileSpawner.position, rotation);
+            
+            // Применяем глитч-множители
+            IProjectile projectile = bullet.GetComponent<IProjectile>();
+            if (projectile != null)
+            {
+                projectile.Speed *= BulletSpeedMultiplier;
+                projectile.Damage *= DamageMultiplier;
+            }
+            
             if (j < _countBullet - 1)
             {
                 await UniTask.Delay(TimeSpan.FromSeconds(_delayBullet), ignoreTimeScale: false);

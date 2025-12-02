@@ -23,7 +23,7 @@ public class LevelCleanupManager : MonoBehaviour
     [ContextMenu("Check Corridor Status")]
     public void CheckAllCorridors()
     {
-        CorridorEnd[] allCorridors = FindObjectsOfType<CorridorEnd>();
+        CorridorEnd[] allCorridors = FindObjectsByType<CorridorEnd>(FindObjectsSortMode.None);
         int connected = 0;
         int unconnected = 0;
         

@@ -25,7 +25,7 @@ namespace CDB.Character.Enemy
             CurrentHealth = MaxHealth;
         }
 
-        protected void Start()
+        protected virtual void Start()
         {
             //TO DO: Zenject
             room = GetComponentInParent<AddRoom>();

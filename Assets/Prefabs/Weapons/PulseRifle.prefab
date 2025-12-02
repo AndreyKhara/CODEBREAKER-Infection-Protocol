@@ -510,10 +510,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0bc65da10d375845851914b13ee9914, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  _weaoponTexture: {fileID: 0}
-  _barrelStock: {fileID: 0}
-  _ammoStock: {fileID: 0}
-  _catalystStock: {fileID: 0}
+  _stopShoot: 0
+  _instability: 0
+  _weaponUI: {fileID: 0}
+  _addInstabilityAmount: 5
+  _barrelStock: {fileID: 5413830935220323595, guid: 18c07cb0730834c409a7c5f6680c2037, type: 3}
+  _ammoStock: {fileID: 9133079235098003887, guid: c7dbcce0cd25dbe4b9b7b2bfd293b5b7, type: 3}
+  _catalystStock: {fileID: 2327943474791936486, guid: ab9adcbaf958d3a4abc268f2cbbb1346, type: 3}
   _projectileSpawner: {fileID: 5585962105618706078}
+  _ricochetBulletPrefab: {fileID: 8635179893654266680, guid: f94d93ecdb06041898d83bd96c011c6f, type: 3}
   _delayBullet: 0.1
   _countBullet: 3

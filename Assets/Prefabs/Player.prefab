@@ -278,6 +278,7 @@ GameObject:
   - component: {fileID: 2941120469190232574}
   - component: {fileID: 8781706306403661486}
   - component: {fileID: 2137862542427678165}
+  - component: {fileID: 5983010011715588400}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -458,6 +459,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cameraTransform: {fileID: 5697148175155871598}
+  _glitchEffect: {fileID: 5983010011715588400}
   sensitivity: 0.1
   smoothing: 5
   minPitch: -90
@@ -477,6 +479,21 @@ MonoBehaviour:
   _weapons:
   - {fileID: 4484704338111866752}
   - {fileID: 7705256300983107673}
+--- !u!114 &5983010011715588400
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6203792684997276855}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8805b1eb772a4461389be1f311ccb748, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CDB.Input.GlitchCameraEffect
+  _driftSpeed: 2
+  _maxDriftAngle: 15
+  _jitterFrequency: 15
 --- !u!1001 &69779383244698524
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -553,18 +570,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8082045950845220963, guid: fd635cbb2d19b4141ba30aef48c0b411, type: 3}
-      propertyPath: _ammoStock
-      value: 
-      objectReference: {fileID: 9133079235098003887, guid: c7dbcce0cd25dbe4b9b7b2bfd293b5b7, type: 3}
-    - target: {fileID: 8082045950845220963, guid: fd635cbb2d19b4141ba30aef48c0b411, type: 3}
-      propertyPath: _barrelStock
-      value: 
-      objectReference: {fileID: 5413830935220323595, guid: 18c07cb0730834c409a7c5f6680c2037, type: 3}
-    - target: {fileID: 8082045950845220963, guid: fd635cbb2d19b4141ba30aef48c0b411, type: 3}
-      propertyPath: _catalystStock
-      value: 
-      objectReference: {fileID: 2327943474791936486, guid: ab9adcbaf958d3a4abc268f2cbbb1346, type: 3}
     m_RemovedComponents:
     - {fileID: 2963645072360796815, guid: fd635cbb2d19b4141ba30aef48c0b411, type: 3}
     - {fileID: 7954740720691590592, guid: fd635cbb2d19b4141ba30aef48c0b411, type: 3}
@@ -595,18 +600,6 @@ PrefabInstance:
       propertyPath: _barrel
       value: 
       objectReference: {fileID: 0}
-    - target: {fileID: -5096249448582047979, guid: 3d5acc82bc4669b4c93feb3c2f7bb820, type: 3}
-      propertyPath: _ammoStock
-      value: 
-      objectReference: {fileID: 9133079235098003887, guid: c7dbcce0cd25dbe4b9b7b2bfd293b5b7, type: 3}
-    - target: {fileID: -5096249448582047979, guid: 3d5acc82bc4669b4c93feb3c2f7bb820, type: 3}
-      propertyPath: _barrelStock
-      value: 
-      objectReference: {fileID: 5413830935220323595, guid: 18c07cb0730834c409a7c5f6680c2037, type: 3}
-    - target: {fileID: -5096249448582047979, guid: 3d5acc82bc4669b4c93feb3c2f7bb820, type: 3}
-      propertyPath: _catalystStock
-      value: 
-      objectReference: {fileID: 2327943474791936486, guid: ab9adcbaf958d3a4abc268f2cbbb1346, type: 3}
     - target: {fileID: 1583231391869014090, guid: 3d5acc82bc4669b4c93feb3c2f7bb820, type: 3}
       propertyPath: m_Name
       value: Blaster
