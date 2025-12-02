@@ -16,7 +16,7 @@ namespace CDB.Character.Enemy
         {
             CurrentHealth -= damageAmount;
             Debug.Log($"DummyTarget получил урон: {damageAmount}, осталось здоровья: {CurrentHealth}");
-            ShowDamage();
+            ShowDamage($"{damageAmount}");
             if (CurrentHealth <= 0)
             {
                 Death();

@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using FGT.Prototypes.DamagePopup;
 
 namespace CDB.Character.Enemy
 {
@@ -13,6 +14,7 @@ namespace CDB.Character.Enemy
         [SerializeField] protected Renderer _targetRenderer;
         [SerializeField] private Color _damageColor = Color.red;
         [SerializeField] private Color _normalColor = Color.white;
+        [SerializeField] private Transform _enemyTransform;
         // TO DO: Adressables
         [SerializeField] private GameObject[] _modules;
         private AddRoom room;
@@ -59,7 +61,7 @@ namespace CDB.Character.Enemy
 
         public virtual void TakeDamage(float damageAmount)
         {
-            ShowDamage();
+            ShowDamage($"{damageAmount}");
             CurrentHealth -= damageAmount;
             if (CurrentHealth <= 0)
             {
@@ -85,8 +87,9 @@ namespace CDB.Character.Enemy
             Destroy(gameObject);
         }
 
-        protected void ShowDamage()
+        protected void ShowDamage(string textForShow)
         {
+            DamagePopup.Create(textForShow, 2.5f * Vector3.up, _enemyTransform, Color.white);
             UpdateColor(_damageColor);
             CancelInvoke(nameof(ResetColor));
             Invoke(nameof(ResetColor), 0.2f);

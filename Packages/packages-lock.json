@@ -242,6 +242,14 @@
       },
       "url": "https://packages.unity.com"
     },
+    "com.unity.textmeshpro": {
+      "version": "5.0.0",
+      "depth": 1,
+      "source": "builtin",
+      "dependencies": {
+        "com.unity.ugui": "2.0.0"
+      }
+    },
     "com.unity.timeline": {
       "version": "1.8.9",
       "depth": 0,
@@ -272,6 +280,15 @@
         "com.unity.modules.jsonserialize": "1.0.0"
       },
       "url": "https://packages.unity.com"
+    },
+    "fgt.prototypes.damagepopup": {
+      "version": "https://github.com/lucrybpin/unity-fgt-prototypes-damagepopup.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {
+        "com.unity.textmeshpro": "3.0.9"
+      },
+      "hash": "a45d938352cea9bcee5f48582d8627d5e05dc9cd"
     },
     "com.unity.modules.accessibility": {
       "version": "1.0.0",
