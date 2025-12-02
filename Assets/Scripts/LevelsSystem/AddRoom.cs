@@ -17,7 +17,6 @@ public class AddRoom : MonoBehaviour
   
    //private RoomVariants variants;
   [HideInInspector] public List<GameObject> enemies;
-   private bool wallsDestroyed;
     private bool spawned;
    private void Start(){
     //variants = GameObject.FindGameObjectWithTag("Rooms").GetComponent<RoomVariants>();
@@ -53,8 +52,7 @@ public class AddRoom : MonoBehaviour
         else
         {
             Debug.Log($"Check Enemies enemies: {enemies.Count}");
-            CheckEnemies();
-
+            await CheckEnemies();
         }
     }
    /* IEnumerator CheckEnemies(){
@@ -67,9 +65,6 @@ public class AddRoom : MonoBehaviour
         Debug.Log("void Destroy Walls");
        
         Destroy(door);
-        wallsDestroyed = true;
-        //Destroy(gameObject);
-        
     }
 
    /*private void OnTriggerStay2D(Collider2D other) {

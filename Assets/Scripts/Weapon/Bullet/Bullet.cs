@@ -9,6 +9,9 @@ public class Bullet : MonoBehaviour, IProjectile
     [SerializeField] private float _damage = 10f;
     [SerializeField] private Rigidbody _rb;
     
+    [Header("Wall Collision")]
+    [SerializeField] private LayerMask _wallLayers; // Слои стен для уничтожения пули
+    
     private float spawnTime;
 
     public float Speed
@@ -32,7 +35,11 @@ public class Bullet : MonoBehaviour, IProjectile
     private void Awake()
     {
         spawnTime = Time.time;
-        // Задаем начальную скорость, двигаем вперед
+    }
+
+    private void Start()
+    {
+        // Применяем скорость в Start, чтобы глитч-множители успели изменить Speed
         _rb.linearVelocity = transform.forward * Speed;
     }
 
@@ -63,8 +70,23 @@ public class Bullet : MonoBehaviour, IProjectile
             // TO DO
             ApplyEffect(other);
             Destroy(gameObject);
+            return;
         }
 
+        // Уничтожение при попадании в стену
+        if (other.CompareTag("Wall") || IsInLayerMask(other.gameObject.layer, _wallLayers))
+        {
+            Destroy(gameObject);
+            return;
+        }
+    }
+
+    /// <summary>
+    /// Проверяет, находится ли слой объекта в указанной LayerMask
+    /// </summary>
+    private bool IsInLayerMask(int layer, LayerMask layerMask)
+    {
+        return layerMask.value != 0 && (layerMask.value & (1 << layer)) != 0;
     }
 
     protected virtual void ApplyEffect(Collider other)

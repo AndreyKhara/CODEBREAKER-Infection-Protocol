@@ -11,8 +11,9 @@ namespace CDB.Character.Enemy
         [SerializeField] private Color _normalColor = Color.white;
 
 
-        private void Start()
+        protected override void Start()
         {
+            base.Start();
             UpdateColor(_normalColor);
         }
 
