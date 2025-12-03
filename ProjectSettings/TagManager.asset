@@ -12,6 +12,7 @@ TagManager:
   - CorridorEnd
   - Corridors
   - Enemy
+  - CorridorLine
   layers:
   - Default
   - TransparentFX
