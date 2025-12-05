@@ -11,12 +11,12 @@ public class PulseRifle : Gun
 
     public override void Shoot()
     {
+        if (_stopShoot) return;
         if (_isShooting) return;
 
         if (_ammoModule.AmountAmmo >= _barrelModule.ProjectileCount * _countBullet)
         {
             _isShooting = true; 
-            
 
             ShootSequence().Forget();
 
@@ -28,20 +28,17 @@ public class PulseRifle : Gun
         }
     }
 
-
     private async UniTaskVoid ShootSequence()
     {
         for (int i = 0; i < _barrelModule.ProjectileCount; i++)
         {
-            float _spreadAngle = _barrelModule.Spread;
             // Логика разброса для КАЖДОЙ пули
-            float randomPitch = UnityEngine.Random.Range(-_spreadAngle, _spreadAngle);
-            float randomYaw = UnityEngine.Random.Range(-_spreadAngle, _spreadAngle);
+            float randomPitch = UnityEngine.Random.Range(-Spread, Spread);
+            float randomYaw = UnityEngine.Random.Range(-Spread, Spread);
             Quaternion spreadRotation = Quaternion.Euler(randomPitch, randomYaw, 0f);
             Quaternion finalRotation = _projectileSpawner.rotation * spreadRotation;
 
             await SpawnBulletBurst(finalRotation);
-
         }
         _isShooting = false; 
     }
@@ -50,11 +47,22 @@ public class PulseRifle : Gun
     {
        for (int j = 0; j < _countBullet; j++)
        {
-            Instantiate(_bulletPrefab, _projectileSpawner.position, rotation);
+            // Создаем пулю (используем ActiveBulletPrefab для поддержки рикошета)
+            GameObject bullet = Instantiate(ActiveBulletPrefab, _projectileSpawner.position, rotation);
+            
+            // Применяем глитч-множители
+            IProjectile projectile = bullet.GetComponent<IProjectile>();
+            if (projectile != null)
+            {
+                projectile.Speed *= BulletSpeedMultiplier;
+                projectile.Damage *= DamageMultiplier;
+            }
+            
             if (j < _countBullet - 1)
             {
                 await UniTask.Delay(TimeSpan.FromSeconds(_delayBullet), ignoreTimeScale: false);
             }
+            AddInstability();
        }
     }
 

@@ -148,9 +148,9 @@ GameObject:
   - component: {fileID: 1051619630191961502}
   - component: {fileID: 6635271523379354284}
   - component: {fileID: 6147132552956332254}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube (1)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -259,9 +259,9 @@ GameObject:
   - component: {fileID: 8957728508149110067}
   - component: {fileID: 7770525149718609371}
   - component: {fileID: 6804397995976798878}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -445,9 +445,9 @@ GameObject:
   - component: {fileID: 2144013120617766275}
   - component: {fileID: 8256760399118019145}
   - component: {fileID: 3252135792671844007}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube (2)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -685,7 +685,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8305055260659012825, guid: ee4e333ee13d1864a8f696fc53baf631, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -773,7 +773,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1727065629379326750, guid: 1b4019681b9b37a49a7badc98c0a420c, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8868594277738846393, guid: 1b4019681b9b37a49a7badc98c0a420c, type: 3}
       propertyPath: m_LocalScale.x
@@ -851,7 +851,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2843769940556571301, guid: 4773423204ddfb14e8f91ecedbe152c6, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4799184236393500134, guid: 4773423204ddfb14e8f91ecedbe152c6, type: 3}
       propertyPath: m_LocalScale.x
@@ -1067,7 +1067,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4707407990686410405, guid: 74ce18a7505c50c44b33640be9c78fab, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1145,7 +1145,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7305131569484353104, guid: 6ebc5571a72e58b46bef95109dcd024b, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1491,7 +1491,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8974337004567423494, guid: 9bddcb0815bd64a4a82337a15d39747d, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1857,7 +1857,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1907940839197501990, guid: 8c2809c2e37fa3d4ab68ab8d0916201c, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2035,7 +2035,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3952030938918990920, guid: 0aead217bc9331d46b58ca3202e734d6, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7224985086865255629, guid: 0aead217bc9331d46b58ca3202e734d6, type: 3}
       propertyPath: m_LocalScale.x
@@ -2165,7 +2165,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7346518400709871427, guid: 3d61df24556ad7f4c8f10d83c1d234d1, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2191,7 +2191,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3542695289896307655, guid: 8439b020fb64a75439dec72d6651465c, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7027029258813684428, guid: 8439b020fb64a75439dec72d6651465c, type: 3}
       propertyPath: m_LocalScale.x

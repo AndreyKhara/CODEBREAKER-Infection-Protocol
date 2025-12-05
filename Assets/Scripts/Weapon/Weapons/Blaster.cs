@@ -1,38 +1,47 @@
-using System.Reflection;
 using UnityEngine;
 
 public class Blaster : Gun
 {
     public override void Shoot()
     {
-        // Проверяем, достаточно ли патронов для всех выстрелов за одно нажатие
-        if (_ammoModule.AmountAmmo >= _barrelModule.ProjectileCount)
-        {
-            for (int i = 0; i < _barrelModule.ProjectileCount; i++)
-            {
-                float _spreadAngle = _barrelModule.Spread;
-                // Логика разброса для КАЖДОЙ пули
-                float randomPitch = Random.Range(-_spreadAngle, _spreadAngle);
-                float randomYaw = Random.Range(-_spreadAngle, _spreadAngle);
-                Quaternion spreadRotation = Quaternion.Euler(randomPitch, randomYaw, 0f);
-                Quaternion finalRotation = _projectileSpawner.rotation * spreadRotation;
-
-                // Создаем пулю
-                Instantiate(_bulletPrefab, _projectileSpawner.position, finalRotation);
-                Debug.Log(_bulletPrefab);
-                
-            }
-            _ammoModule.AmountAmmo -= _barrelModule.ProjectileCount;
-        }
-        else
+        if (_stopShoot) return;
+        
+        if (_ammoModule.AmountAmmo < _barrelModule.ProjectileCount)
         {
             Recharge();
+            return;
         }
+
+        for (int i = 0; i < _barrelModule.ProjectileCount; i++)
+        {
+            SpawnBullet();
+            AddInstability();
+        }
+        
+        _ammoModule.AmountAmmo -= _barrelModule.ProjectileCount;
+    }
+
+    private void SpawnBullet()
+    {
+        Quaternion rotation = GetSpreadRotation();
+        GameObject bullet = Instantiate(ActiveBulletPrefab, _projectileSpawner.position, rotation);
+        
+        if (bullet.TryGetComponent<IProjectile>(out var projectile))
+        {
+            projectile.Speed *= BulletSpeedMultiplier;
+            projectile.Damage *= DamageMultiplier;
+        }
+    }
+
+    private Quaternion GetSpreadRotation()
+    {
+        float pitch = Random.Range(-Spread, Spread);
+        float yaw = Random.Range(-Spread, Spread);
+        return _projectileSpawner.rotation * Quaternion.Euler(pitch, yaw, 0f);
     }
 
     public override void Recharge()
     {
         _ammoModule.AmountAmmo = _ammoModule.MaxAmmo;
-        Debug.Log("Recharge blaster");
     }
 }

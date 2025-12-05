@@ -12,7 +12,8 @@ TagManager:
   - CorridorEnd
   - Corridors
   - Enemy
-  - CorridorLine
+  - Player
+  - Wall
   layers:
   - Default
   - TransparentFX
@@ -20,7 +21,7 @@ TagManager:
   - Ground
   - Water
   - UI
-  - 
+  - Wall
   - 
   - 
   - 

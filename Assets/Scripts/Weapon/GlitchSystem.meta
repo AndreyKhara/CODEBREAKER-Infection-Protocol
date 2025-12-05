@@ -1,0 +1,12 @@
+fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Art/Materials.meta
+guid: ed614e8ea3eebed45a1ee7db81332f31
+========
+guid: 63851d44b89a4684eae28b2931fb0cb9
+>>>>>>>> develop:Assets/Scripts/Weapon/GlitchSystem.meta
+folderAsset: yes
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

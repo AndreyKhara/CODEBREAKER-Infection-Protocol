@@ -158,3 +158,6 @@ MonoBehaviour:
   _timeLife: 5
   _damage: 10
   _rb: {fileID: -5430595991352577095}
+  _wallLayers:
+    serializedVersion: 2
+    m_Bits: 64

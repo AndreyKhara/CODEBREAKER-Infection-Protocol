@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d956a6dd361e8f747b0af597c3f2d796, type: 3}
+  m_Name: GlitchLibrary
+  m_EditorClassIdentifier: Assembly-CSharp::GlitchLibrary
+  _allGlitches:
+  - {fileID: 5027647437220448851, guid: fa0594758214d4c9d9ff2a183fbd0a8c, type: 3}
+  - {fileID: 5597933362706163771, guid: 6329f6b03eb894a59a79595b024556fd, type: 3}
+  - {fileID: 681250332159318888, guid: d20eea36381e840b9ba3bca97a24ee16, type: 3}
+  - {fileID: 8128399359373198879, guid: ca1fa7db99fb82741a719faeeec883bd, type: 3}
+  - {fileID: 5859519355900841637, guid: 72d339dd1194e480aa2fae168da56267, type: 3}
+  - {fileID: 6670873461097544279, guid: 91e2065b374594f4cb9c8627b7c3b44f, type: 3}
+  - {fileID: 6972092191405501808, guid: 34b21a273deefab498720761a8145d98, type: 3}
+  - {fileID: 2038904379179631668, guid: 5563b0ea386d84a4bb774196a0cf906a, type: 3}

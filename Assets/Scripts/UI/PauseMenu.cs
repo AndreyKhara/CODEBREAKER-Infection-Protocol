@@ -14,8 +14,6 @@ public class PauseMenu : MonoBehaviour
 
     void Awake()
     {
-        //playerInput = FindFirstObjectByType<PlayerInput>();
-        //if (playerInput != null)
         _pauseAction = _playerInput.actions["Pause"];
         _pauseAction.performed += OnPause;
     }

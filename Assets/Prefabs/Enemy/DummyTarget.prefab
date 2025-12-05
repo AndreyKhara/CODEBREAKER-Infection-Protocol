@@ -129,7 +129,9 @@ MonoBehaviour:
   _maxHealth: 100
   _moveSpeed: 0
   _damage: 0
-  _respawnDelay: 2
   _targetRenderer: {fileID: 1787489518346476962}
   _damageColor: {r: 1, g: 0, b: 0, a: 1}
   _normalColor: {r: 1, g: 1, b: 1, a: 1}
+  _enemyTransform: {fileID: 8846328324173568622}
+  _modules: []
+  _respawnDelay: 2
