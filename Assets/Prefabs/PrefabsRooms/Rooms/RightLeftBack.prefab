@@ -43,6 +43,8 @@ GameObject:
   m_Component:
   - component: {fileID: 468706320693827209}
   - component: {fileID: 4322112728334299297}
+  - component: {fileID: 1813843663801358554}
+  - component: {fileID: 7096784588325742693}
   m_Layer: 0
   m_Name: RightLeftBack
   m_TagString: TriggerRoom
@@ -97,8 +99,42 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 40, y: 25, z: 30}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1813843663801358554
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1362420973361950884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e75cf77e6a58704588e1ddbaa7ddd65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MiniMapRoom
+  gridPos: {x: 0, y: 0}
+  visitedPrefab: {fileID: 27117257923330855, guid: 027daa16cbd641b4eaadb964fcaab3a1, type: 3}
+  knownPrefab: {fileID: 5187020114249439050, guid: 650ed9d3d9c21da4280107ac17cf9d57, type: 3}
+  hasTop: 0
+  hasRight: 1
+  hasBottom: 1
+  hasLeft: 1
+  icon: {fileID: 0}
+  isVisited: 0
+  isKnown: 0
+--- !u!114 &7096784588325742693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1362420973361950884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d97a440b196ee14d962daba3f4a6ff6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RoomLogic
 --- !u!1 &4392987944433968944
 GameObject:
   m_ObjectHideFlags: 0
