@@ -8,6 +8,7 @@ namespace CDB.Input
     public class PlayerWeaponSystem : MonoBehaviour
     {
         [SerializeField] private List<GameObject> _weapons;
+        [SerializeField] private AudioSource _audioSourceGun;
 
         public IWeapon iCurrentWeapon;
         private int _indexWeapon = 0;
@@ -98,6 +99,8 @@ namespace CDB.Input
         {
             if (iCurrentWeapon == null) return;
             _animatorHand.SetBool("IsShoot", true);
+            _audioSourceGun.clip = iCurrentWeapon.AudioShoot[UnityEngine.Random.Range(0, iCurrentWeapon.AudioShoot.Length)];
+            _audioSourceGun.Play();
             iCurrentWeapon.Shoot();
         }
 

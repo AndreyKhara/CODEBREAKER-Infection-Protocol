@@ -29,6 +29,13 @@ public class Gun : MonoBehaviour, IWeapon
 
     private GlitchManager _glitchManager;
 
+    [Header("Audio")]
+    public AudioClip[] audioShooting;
+    public AudioClip[] AudioShoot => audioShooting;
+
+
+
+
     // Glitch system properties
     [Header("Glitch System")]
     [SerializeField] private GameObject _ricochetBulletPrefab;
