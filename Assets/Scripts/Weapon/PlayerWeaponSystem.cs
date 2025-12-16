@@ -18,6 +18,8 @@ namespace CDB.Input
 
         [Inject]
         private PlayerInput _playerInput;
+        [Inject]
+        private Animator _animatorHand;
         
 
         private void Awake()
@@ -34,6 +36,8 @@ namespace CDB.Input
             _shootAction.performed += ShootPressed;
             _rechargeAction.performed += RechargePressed;
             _changeWeaponAction.performed += ChangeWeapon;
+
+            _shootAction.canceled += ShootCanceled;
         }
 
         private void OnDisable()
@@ -93,7 +97,13 @@ namespace CDB.Input
         private void ShootPressed(InputAction.CallbackContext context)
         {
             if (iCurrentWeapon == null) return;
+            _animatorHand.SetBool("IsShoot", true);
             iCurrentWeapon.Shoot();
+        }
+
+        private void ShootCanceled(InputAction.CallbackContext context)
+        {
+            _animatorHand.SetBool("IsShoot", false);
         }
 
         private void RechargePressed(InputAction.CallbackContext context)

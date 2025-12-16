@@ -28,6 +28,8 @@ namespace CDB.Input
 
         [Inject]
          private PlayerInput _playerInput;
+        [Inject]
+        private Animator _animatorHand;
 
         private void Awake()
         {
@@ -66,6 +68,7 @@ namespace CDB.Input
         {
             //Debug.Log("MOve Perfomed");
             _inputVector = context.ReadValue<Vector2>();
+            _animatorHand.SetBool("IsMove", true);
             StartAnimationPlayer();
             UpdateMoveDirection();
         }
@@ -74,6 +77,7 @@ namespace CDB.Input
         {
             //Debug.Log("Move Canceled");
             _inputVector = Vector2.zero;
+            _animatorHand.SetBool("IsMove", false);
             StopAnimationPlayer();
             UpdateMoveDirection();
 
